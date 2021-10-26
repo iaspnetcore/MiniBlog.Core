@@ -3,8 +3,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//builder.Services.AddTransient
-//builder.Services.AddSingleton
+// Add custom services to the container.
+builder.Services.AddSingleton<IUserServices, BlogUserServices>();
+builder.Services.AddSingleton<IBlogService, FileBlogService>();
+builder.Services.Configure<BlogSettings>(this.Configuration.GetSection("blog"));
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddMetaWeblog<MetaWeblogService>();
+
+
 
 var app = builder.Build();
 

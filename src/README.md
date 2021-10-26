@@ -1,6 +1,8 @@
-# Blog engine for ASP.NET Core 3.1
+# Blog engine for ASP.NET Core 6.x
 
-A full-featured yet simple blog engine built on ASP.NET Core 3.1.
+A full-featured yet simple blog engine built on ASP.NET Core 6.x.
+
+[![Blog](https://www.iaspnetcore.com/blogpost-5ec055705d065d499b65df13-how-to-create-a-miniblogcore-project-with-net6x-step-by-step)](https://www.iaspnetcore.com/blogpost-5ec055705d065d499b65df13-how-to-create-a-miniblogcore-project-with-net6x-step-by-step)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/lwjrlpvmhg50wwbs?svg=true)](https://ci.appveyor.com/project/madskristensen/miniblog-core)
 [![NuGet](https://img.shields.io/nuget/v/MadsKristensen.AspNetCore.Miniblog.svg)](https://nuget.org/packages/MadsKristensen.AspNetCore.Miniblog/)
