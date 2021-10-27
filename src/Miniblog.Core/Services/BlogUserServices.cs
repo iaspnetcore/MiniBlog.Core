@@ -16,7 +16,7 @@
         {
             // username == this.config[Constants.Config.User.UserName] && this.VerifyHashedPassword(password, this.config);
 
-            if (username == "admin" && password == "demo")
+            if (username == "demo" && password == "demo")
                 return true;
             else
                 return false;
