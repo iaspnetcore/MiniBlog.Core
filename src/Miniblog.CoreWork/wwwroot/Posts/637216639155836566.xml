@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<post>
+  <title>服务器安装网站</title>
+  <slug>install</slug>
+  <pubDate>2020-04-05T06:15:58.980Z</pubDate>
+  <lastModified>2020-04-05T07:34:08.178Z</lastModified>
+  <excerpt>服务器安装网站</excerpt>
+  <content>&lt;p&gt;step 1.命令行启动&lt;/p&gt;
+&lt;p&gt;我们先在命令行启动，在控制台可以看到输出信息，测试网站是否正常。&lt;/p&gt;
+&lt;pre class="language-markup"&gt;&lt;code&gt;cd /
+cd /var/www/Miniblog.Core/src
+dotnet publish -c release
+
+cd /var/www/Miniblog.Core/src/bin/release/netcoreapp3.1/publish
+dotnet Miniblog.Core.dll --urls http://localhost:5000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;output :&lt;/p&gt;
+&lt;pre class="language-markup"&gt;&lt;code&gt;Microsoft (R) Build Engine version 16.5.0+d4cbfca49 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Restore completed in 68.87 ms for /var/www/Miniblog.Core/src/Miniblog.Core.csproj.
+  Miniblog.Core -&amp;gt; /var/www/Miniblog.Core/src/bin/release/netcoreapp3.1/Miniblog.Core.dll
+  Miniblog.Core -&amp;gt; /var/www/Miniblog.Core/src/bin/release/netcoreapp3.1/Miniblog.Core.Views.dll
+  Adding WebOptimizer cache files to publish output
+  Miniblog.Core -&amp;gt; /var/www/Miniblog.Core/src/bin/release/netcoreapp3.1/publish/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;step 2.服务配置&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;pre class="language-markup"&gt;&lt;code&gt;sudo vi /etc/systemd/system/kestrel-wwwnetcore3top.service&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内容如下：&lt;/p&gt;
+&lt;pre class="language-markup"&gt;&lt;code&gt;[Unit]
+Description=www.netcore3.top App running on Ubuntu
+
+[Service]
+WorkingDirectory=/var/www/Miniblog.Core/src/bin/release/netcoreapp3.1/publish
+
+ExecStart=/usr/bin/dotnet /var/www/Miniblog.Core/src/bin/release/netcoreapp3.1/publish/Miniblog.Core.dll --urls http://localhost:5000
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=dotnet-example
+User=www-data  
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+[Install]
+WantedBy=multi-user.target&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;3.服务启动&lt;/p&gt;
+&lt;pre class="language-markup"&gt;&lt;code&gt;sudo systemctl enable kestrel-wwwnetcore3top.service
+sudo systemctl daemon-reload 
+sudo systemctl start kestrel-wwwnetcore3top.service&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;</content>
+  <ispublished>true</ispublished>
+  <categories>
+    <category>网站</category>
+  </categories>
+  <comments></comments>
+</post>
