@@ -247,5 +247,16 @@ namespace Miniblog.Core.Services
 
             this.context.HttpContext.User = new ClaimsPrincipal(identity);
         }
+
+
+      
+
+        public Task<Tag[]> GetTagsAsync(string blogid, string username, string password)
+        {
+           
+
+            throw new NotImplementedException();
+        }
+
     }
 }
