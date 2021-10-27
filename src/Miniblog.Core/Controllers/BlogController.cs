@@ -1,35 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Options;
+using System.Diagnostics.CodeAnalysis;
+using System.Text.RegularExpressions;
+using System.Xml;
+
+using Miniblog.Core.Models;
+using Miniblog.Core.Services;
+
+
 namespace Miniblog.Core.Controllers
 {
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Options;
-
-    using Miniblog.Core.Models;
-    using Miniblog.Core.Services;
-
-    using System;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
-    using System.Text.RegularExpressions;
-    using System.Threading.Tasks;
-    using System.Xml;
-
-    using WebEssentials.AspNetCore.Pwa;
-
     public class BlogController : Controller
     {
+
         private readonly IBlogService blog;
 
-        private readonly WebManifest manifest;
+     
 
         private readonly IOptionsSnapshot<BlogSettings> settings;
 
-        public BlogController(IBlogService blog, IOptionsSnapshot<BlogSettings> settings, WebManifest manifest)
+        public BlogController(IBlogService blog, IOptionsSnapshot<BlogSettings> settings)
         {
             this.blog = blog;
             this.settings = settings;
-            this.manifest = manifest;
+           
         }
+
+
+
+        [Route("/{page:int?}")]
+      //  [OutputCache(Profile = "default")]
+        public async Task<IActionResult> Index([FromRoute]int page = 0)
+        {
+            // get published posts.
+            var posts = this.blog.GetPosts();
+
+            // apply paging filter.
+            var filteredPosts = posts.Skip(this.settings.Value.PostsPerPage * page).Take(this.settings.Value.PostsPerPage).ToList();
+
+            // set the view option
+            //this.ViewData[Constants.ViewOption] = this.settings.Value.ListView;
+
+            //this.ViewData[Constants.TotalPostCount] = await posts.CountAsync().ConfigureAwait(true);
+            //this.ViewData[Constants.Title] = this.manifest.Name;
+            //this.ViewData[Constants.Description] = this.manifest.Description;
+            this.ViewData[Constants.prev] = $"/{page + 1}/";
+            this.ViewData[Constants.next] = $"/{(page <= 1 ? null : $"{page - 1}/")}";
+
+            return this.View("~/Views/Blog/Index.cshtml", filteredPosts);
+        }
+
+
+
+        [Route("/blog/{slug?}")]
+        
+        public async Task<IActionResult> Post(string slug)
+        {
+            var post = await this.blog.GetPostBySlug(slug).ConfigureAwait(true);
+
+            return post is null ? this.NotFound() : (IActionResult)this.View(post);
+        }
+
+        
 
         [Route("/blog/comment/{postId}")]
         [HttpPost]
@@ -69,7 +106,7 @@ namespace Miniblog.Core.Controllers
         }
 
         [Route("/blog/category/{category}/{page:int?}")]
-        [OutputCache(Profile = "default")]
+        
         public async Task<IActionResult> Category(string category, int page = 0)
         {
             // get posts for the selected category.
@@ -79,14 +116,14 @@ namespace Miniblog.Core.Controllers
             var filteredPosts = posts.Skip(this.settings.Value.PostsPerPage * page).Take(this.settings.Value.PostsPerPage);
 
             // set the view option
-            this.ViewData["ViewOption"] = this.settings.Value.ListView;
+          //  this.ViewData["ViewOption"] = this.settings.Value.ListView;
 
-            this.ViewData[Constants.TotalPostCount] = await posts.CountAsync().ConfigureAwait(true);
-            this.ViewData[Constants.Title] = $"{this.manifest.Name} {category}";
+            this.ViewData[Constants.TotalPostCount] =  posts.Count();
+          //  this.ViewData[Constants.Title] = $"{this.manifest.Name} {category}";
             this.ViewData[Constants.Description] = $"Articles posted in the {category} category";
             this.ViewData[Constants.prev] = $"/blog/category/{category}/{page + 1}/";
             this.ViewData[Constants.next] = $"/blog/category/{category}/{(page <= 1 ? null : page - 1 + "/")}";
-            return this.View("~/Views/Blog/Index.cshtml", filteredPosts.AsAsyncEnumerable());
+            return this.View("~/Views/Blog/Index.cshtml", filteredPosts);
         }
 
         [Route("/blog/comment/{postId}/{commentId}")]
@@ -129,9 +166,9 @@ namespace Miniblog.Core.Controllers
 
         [Route("/blog/edit/{id?}")]
         [HttpGet, Authorize]
-        public async Task<IActionResult> Edit(string? id)
+        public async Task<IActionResult> Edit(string id)
         {
-            var categories = await this.blog.GetCategories().ToListAsync();
+            var categories =  this.blog.GetCategories();
             categories.Sort();
             this.ViewData[Constants.AllCats] = categories;
 
@@ -145,36 +182,6 @@ namespace Miniblog.Core.Controllers
             return post is null ? this.NotFound() : (IActionResult)this.View(post);
         }
 
-        [Route("/{page:int?}")]
-        [OutputCache(Profile = "default")]
-        public async Task<IActionResult> Index([FromRoute]int page = 0)
-        {
-            // get published posts.
-            var posts = this.blog.GetPosts();
-
-            // apply paging filter.
-            var filteredPosts = posts.Skip(this.settings.Value.PostsPerPage * page).Take(this.settings.Value.PostsPerPage);
-
-            // set the view option
-            this.ViewData[Constants.ViewOption] = this.settings.Value.ListView;
-
-            this.ViewData[Constants.TotalPostCount] = await posts.CountAsync().ConfigureAwait(true);
-            this.ViewData[Constants.Title] = this.manifest.Name;
-            this.ViewData[Constants.Description] = this.manifest.Description;
-            this.ViewData[Constants.prev] = $"/{page + 1}/";
-            this.ViewData[Constants.next] = $"/{(page <= 1 ? null : $"{page - 1}/")}";
-
-            return this.View("~/Views/Blog/Index.cshtml", filteredPosts);
-        }
-
-        [Route("/blog/{slug?}")]
-        [OutputCache(Profile = "default")]
-        public async Task<IActionResult> Post(string slug)
-        {
-            var post = await this.blog.GetPostBySlug(slug).ConfigureAwait(true);
-
-            return post is null ? this.NotFound() : (IActionResult)this.View(post);
-        }
 
         /// <remarks>This is for redirecting potential existing URLs from the old Miniblog URL format.</remarks>
         [Route("/post/{slug}")]
@@ -183,7 +190,7 @@ namespace Miniblog.Core.Controllers
 
         [Route("/blog/{slug?}")]
         [HttpPost, Authorize, AutoValidateAntiforgeryToken]
-        [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Consumer preference.")]
+       
         public async Task<IActionResult> UpdatePost(Post post)
         {
             if (!this.ModelState.IsValid)
@@ -229,7 +236,7 @@ namespace Miniblog.Core.Controllers
               ".webp"
             };
 
-            foreach (Match? match in imgRegex.Matches(post.Content))
+            foreach (Match match in imgRegex.Matches(post.Content))
             {
                 if (match is null)
                 {
@@ -269,5 +276,7 @@ namespace Miniblog.Core.Controllers
                 }
             }
         }
+
+
     }
 }

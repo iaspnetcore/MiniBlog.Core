@@ -1,14 +1,16 @@
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Security.Cryptography;
+using System.Text;
+
+
 namespace Miniblog.Core.Models
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Globalization;
-    using System.Security.Cryptography;
-    using System.Text;
-
     public class Comment
     {
+
         [Required]
         public string Author { get; set; } = string.Empty;
 
@@ -48,5 +50,6 @@ namespace Miniblog.Core.Models
         }
 
         public string RenderContent() => this.Content;
+
     }
 }

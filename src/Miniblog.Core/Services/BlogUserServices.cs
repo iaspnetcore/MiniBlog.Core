@@ -1,4 +1,4 @@
-namespace Miniblog.Core.Services
+﻿namespace Miniblog.Core.Services
 {
     using Microsoft.AspNetCore.Cryptography.KeyDerivation;
     using Microsoft.Extensions.Configuration;
@@ -12,9 +12,16 @@ namespace Miniblog.Core.Services
 
         public BlogUserServices(IConfiguration config) => this.config = config;
 
-        public bool ValidateUser(string username, string password) =>
-            username == this.config[Constants.Config.User.UserName] && this.VerifyHashedPassword(password, this.config);
+        public bool ValidateUser(string username, string password)
+        {
+            // username == this.config[Constants.Config.User.UserName] && this.VerifyHashedPassword(password, this.config);
 
+            if (username == "admin" && password == "demo")
+                return true;
+            else
+                return false;
+
+        }
         private bool VerifyHashedPassword(string password, IConfiguration config)
         {
             var saltBytes = Encoding.UTF8.GetBytes(config[Constants.Config.User.Salt]);

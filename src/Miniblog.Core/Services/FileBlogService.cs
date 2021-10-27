@@ -1,22 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Xml.XPath;
+
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+
+using Miniblog.Core.Models;
+
+
 namespace Miniblog.Core.Services
 {
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-
-    using Miniblog.Core.Models;
-
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Globalization;
-    using System.IO;
-    using System.Linq;
-    using System.Text.RegularExpressions;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using System.Xml.Linq;
-    using System.Xml.XPath;
-
     public class FileBlogService : IBlogService
     {
         private const string FILES = "files";
@@ -29,10 +30,7 @@ namespace Miniblog.Core.Services
 
         private readonly string folder;
 
-        [SuppressMessage(
-                "Usage",
-                "SecurityIntelliSenseCS:MS Security rules violation",
-                Justification = "Path not derived from user input.")]
+      
         public FileBlogService(IWebHostEnvironment env, IHttpContextAccessor contextAccessor)
         {
             if (env is null)
@@ -68,11 +66,8 @@ namespace Miniblog.Core.Services
             return Task.CompletedTask;
         }
 
-        [SuppressMessage(
-            "Globalization",
-            "CA1308:Normalize strings to uppercase",
-            Justification = "Consumer preference.")]
-        public virtual IAsyncEnumerable<string> GetCategories()
+       
+        public virtual List<string> GetCategories()
         {
             var isAdmin = this.IsAdmin();
 
@@ -81,10 +76,10 @@ namespace Miniblog.Core.Services
                 .SelectMany(post => post.Categories)
                 .Select(cat => cat.ToLowerInvariant())
                 .Distinct()
-                .ToAsyncEnumerable();
+                .ToList();
         }
 
-        public virtual Task<Post?> GetPostById(string id)
+        public virtual Task<Post> GetPostById(string id)
         {
             var isAdmin = this.IsAdmin();
             var post = this.cache.FirstOrDefault(p => p.ID.Equals(id, StringComparison.OrdinalIgnoreCase));
@@ -95,7 +90,7 @@ namespace Miniblog.Core.Services
                 : post);
         }
 
-        public virtual Task<Post?> GetPostBySlug(string slug)
+        public virtual Task<Post> GetPostBySlug(string slug)
         {
             var isAdmin = this.IsAdmin();
             var post = this.cache.FirstOrDefault(p => p.Slug.Equals(slug, StringComparison.OrdinalIgnoreCase));
@@ -107,18 +102,18 @@ namespace Miniblog.Core.Services
         }
 
         /// <remarks>Overload for getPosts method to retrieve all posts.</remarks>
-        public virtual IAsyncEnumerable<Post> GetPosts()
+        public virtual List<Post> GetPosts()
         {
             var isAdmin = this.IsAdmin();
 
             var posts = this.cache
                 .Where(p => p.PubDate <= DateTime.UtcNow && (p.IsPublished || isAdmin))
-                .ToAsyncEnumerable();
+                .ToList();
 
             return posts;
         }
 
-        public virtual IAsyncEnumerable<Post> GetPosts(int count, int skip = 0)
+        public virtual List<Post> GetPosts(int count, int skip = 0)
         {
             var isAdmin = this.IsAdmin();
 
@@ -126,12 +121,12 @@ namespace Miniblog.Core.Services
                 .Where(p => p.PubDate <= DateTime.UtcNow && (p.IsPublished || isAdmin))
                 .Skip(skip)
                 .Take(count)
-                .ToAsyncEnumerable();
+                .ToList();
 
             return posts;
         }
 
-        public virtual IAsyncEnumerable<Post> GetPostsByCategory(string category)
+        public virtual List<Post> GetPostsByCategory(string category)
         {
             var isAdmin = this.IsAdmin();
 
@@ -140,14 +135,11 @@ namespace Miniblog.Core.Services
                         where p.Categories.Contains(category, StringComparer.OrdinalIgnoreCase)
                         select p;
 
-            return posts.ToAsyncEnumerable();
+            return posts.ToList();
         }
 
-        [SuppressMessage(
-            "Usage",
-            "SecurityIntelliSenseCS:MS Security rules violation",
-            Justification = "Caller must review file name.")]
-        public async Task<string> SaveFile(byte[] bytes, string fileName, string? suffix = null)
+       
+        public async Task<string> SaveFile(byte[] bytes, string fileName, string suffix = null)
         {
             if (bytes is null)
             {
@@ -295,10 +287,6 @@ namespace Miniblog.Core.Services
         private static string ReadValue(XElement doc, XName name, string defaultValue = "") =>
             doc.Element(name) is null ? defaultValue : doc.Element(name)?.Value ?? defaultValue;
 
-        [SuppressMessage(
-            "Usage",
-            "SecurityIntelliSenseCS:MS Security rules violation",
-            Justification = "Path not derived from user input.")]
         private string GetFilePath(Post post) => Path.Combine(this.folder, $"{post.ID}.xml");
 
         private void Initialize()
@@ -307,10 +295,7 @@ namespace Miniblog.Core.Services
             this.SortCache();
         }
 
-        [SuppressMessage(
-            "Globalization",
-            "CA1308:Normalize strings to uppercase",
-            Justification = "The slug should be lower case.")]
+       
         private void LoadPosts()
         {
             if (!Directory.Exists(this.folder))
@@ -347,4 +332,6 @@ namespace Miniblog.Core.Services
             }
         }
     }
+
 }
+

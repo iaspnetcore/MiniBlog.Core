@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Miniblog.Core</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Miniblog.Core.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    @RenderSection(Constants.Head, required: false)
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Miniblog.Core</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Miniblog</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -27,7 +29,11 @@
                         </li>
                     </ul>
                 </div>
+
+                
+
             </div>
+
         </nav>
     </header>
     <div class="container">
@@ -38,7 +44,27 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - Miniblog.Core - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+
+            <ul class="navbar-nav flex-grow-1">
+
+                @{
+                    string path = Context.Request.Path;
+
+
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-controller="Blog" asp-action="Edit" asp-route-id="">NewPost</a></li>
+                        <li><a href="~/logout/" title="SignOutAsAdministrator">SignOut</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="~/login/?returnUrl=@path" rel="nofollow" title="SignInAsAdministrator">SignIn</a></li>
+                    }
+                }
+
+                <li> &copy; 2020 - Miniblog.Core - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+            </ul>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

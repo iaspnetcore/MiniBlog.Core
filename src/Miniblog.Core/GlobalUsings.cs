@@ -1,20 +1,28 @@
-﻿
-global using System.Runtime.CompilerServices;
-
+﻿global using System;
+global using System.IO;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using System.Runtime.InteropServices;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Hosting;
+global using Microsoft.AspNetCore.HttpsPolicy;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
 global using Microsoft.AspNetCore.Authentication.Cookies;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.DataProtection;
+
+
+
+
+
+global using WebMarkupMin.AspNetCore3;
+global using WebMarkupMin.Core;
+
+global using WebMarkupMin.NUglify;
 
 global using Miniblog.Core;
+
 global using Miniblog.Core.Services;
-
-global using IWmmLogger = WebMarkupMin.Core.Loggers.ILogger;
-global using MetaWeblogService = Miniblog.Core.Services.MetaWeblogService;
-global using WmmNullLogger = WebMarkupMin.Core.Loggers.NullLogger;
-
-global using WilderMinds.MetaWeblog;
-
-
-
-global using WebEssentials.AspNetCore.OutputCaching;
-
-global using WebMarkupMin.AspNetCore2;
-global using WebMarkupMin.Core;

@@ -1,13 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Text;
+using System.Text.RegularExpressions;
+
+
 namespace Miniblog.Core.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Globalization;
-    using System.Text;
-    using System.Text.RegularExpressions;
-
     public class Post
     {
         public IList<string> Categories { get; } = new List<string>();
@@ -105,5 +106,6 @@ namespace Miniblog.Core.Models
 
             return text;
         }
+
     }
 }

@@ -6,9 +6,31 @@ builder.Services.AddControllersWithViews();
 // Add custom services to the container.
 builder.Services.AddSingleton<IUserServices, BlogUserServices>();
 builder.Services.AddSingleton<IBlogService, FileBlogService>();
+#region 配置数据保护，Preventing Cross-Site Request Forgery (XSRF/CSRF) Attacks in ASP.NET Core
+//https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/configuration/overview?view=aspnetcore-3.1
 
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddMetaWeblog<MetaWeblogService>();
+var keysFolder = "";
+
+if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+    keysFolder = "C:\\artifacts";
+else
+    keysFolder = "/var/artifacts";
+
+builder.Services.AddDataProtection()
+        .PersistKeysToFileSystem(new DirectoryInfo(keysFolder)); //把加密信息保存大文件夹
+
+#endregion
+
+builder.Services.AddControllersWithViews();
+
+//.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddHttpContextAccessor();
+
+
+
+
+builder.Services.AddSingleton<IUserServices, BlogUserServices>();
+builder.Services.AddSingleton<IBlogService, FileBlogService>();
 
 //Add  Configure Options https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/fundamentals/configuration/index/samples/6.x/ConfigSample/Program.cs
 builder.Configuration.AddJsonFile("appsettings.json");
@@ -16,27 +38,10 @@ builder.Configuration.AddJsonFile("appsettings.json");
 builder.Services.Configure<BlogSettings>(
     builder.Configuration.GetSection("blog"));
 
-
-
-// Progressive Web Apps https://github.com/madskristensen/WebEssentials.AspNetCore.ServiceWorker
-builder.Services.AddProgressiveWebApp(
-    new WebEssentials.AspNetCore.Pwa.PwaOptions
-    {
-        OfflineRoute = "/shared/offline/"
-    });
+//builder.Services.AddProxies();
 
 
 
-
-// Output caching (https://github.com/madskristensen/WebEssentials.AspNetCore.OutputCaching)
-builder.Services.AddOutputCaching(
-    options =>
-    {
-        options.Profiles["default"] = new OutputCacheProfile
-        {
-            Duration = 3600
-        };
-    });
 
 // Cookie authentication.
 builder.Services
@@ -62,16 +67,27 @@ builder.Services
             options.MinificationSettings.RemoveOptionalEndTags = false;
             options.MinificationSettings.WhitespaceMinificationMode = WhitespaceMinificationMode.Safe;
         });
-builder.Services.AddSingleton<IWmmLogger, WmmNullLogger>(); // Used by HTML minifier
 
-// Bundling, minification and Sass transpilation (https://github.com/ligershark/WebOptimizer)
-builder.Services.AddWebOptimizer(
-    pipeline =>
-    {
-        pipeline.MinifyJsFiles();
-        pipeline.CompileScssFiles()
-                .InlineImages(1);
-    });
+builder.Services
+     .AddWebMarkupMin(options =>
+     {
+         options.AllowMinificationInDevelopmentEnvironment = true;
+         options.AllowCompressionInDevelopmentEnvironment = true;
+                     // options.DisableMinification = !EngineContext.Current.Resolve<CommonSettings>().EnableHtmlMinification;
+                     options.DisableCompression = true;
+         options.DisablePoweredByHttpHeaders = true;
+     })
+     .AddHtmlMinification(options =>
+     {
+         options.CssMinifierFactory = new NUglifyCssMinifierFactory();
+         options.JsMinifierFactory = new NUglifyJsMinifierFactory();
+     })
+     .AddXmlMinification(options =>
+     {
+         var settings = options.MinificationSettings;
+         settings.RenderEmptyTagsWithSpace = true;
+         settings.CollapseTagsWithoutContent = true;
+     });
 
 
 
@@ -84,13 +100,18 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+
+
 app.UseStaticFiles();
+
+app.UseWebMarkupMin();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseOutputCaching();
 
 app.MapControllerRoute(
     name: "default",
