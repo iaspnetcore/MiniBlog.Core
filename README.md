@@ -21,9 +21,14 @@ Password: *demo*
 ### Custom themes
 In search for custom designed themes for MiniBlog.Core? [Click here](https://francis.bio/miniblog-themes/).
 
+
+没有账号的点我注册Vultr账号（注册就送20美元哦）https://www.vultr.com/?ref=7035322-3B
+
+Vultr注册购买图文教程 [Click here](https://www.vpsss.net/298.html).
+
 ## Features
-- Windows/Open Live Writer support
-- RSS and ATOM feeds
+- How to Deploy a New Instance on Vultr Step by Step (https://www.iaspnetcore.com/blogpost-6199ff495b26cb0202ad6ce8-how-to-deploy-a-new-instance-on-vultr-step-by-step)
+- How To Install and uninstall reinstall Nginx on Ubuntu 18.04（aliyun）(https://www.iaspnetcore.com/blogpost-5d9865cc72c1772b244afe0f-how-to-install-and-uninstall-reinstall-nginx-on-ubuntu-1804aliyun)
 - User comments
 - Search engine optimized
 - All major browsers fully supported (IE 9+)
