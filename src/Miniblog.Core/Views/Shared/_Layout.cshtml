@@ -1,79 +1,90 @@
-﻿<!DOCTYPE html>
+﻿@inject IOptionsSnapshot<BlogSettings> settings
+@inject WebManifest manifest
+@{
+    var host = $"{Context.Request.Scheme}://{Context.Request.Host}";
+}
+<!DOCTYPE html>
 <html lang="en">
-<head>
+<head prefix="og:http://ogp.me/ns#">
     <meta charset="utf-8" />
+    <title>@ViewData[Constants.Title]</title>
+    <meta name="description" content="@ViewData[Constants.Description]" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Miniblog.Core</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
 
+    <link rel="preload" href="~/js/site.js" as="script" />
+    <link rel="preload" href="~/css/belowthefold.scss" as="style" />
+    <noscript><link rel="stylesheet" href="~/css/belowthefold.scss" /></noscript>
+    @RenderSection(Constants.Preload, required: false)
+    <link rel="stylesheet" href="~/css/abovethefold.scss" inline />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="@ViewData[Constants.Title]" />
+    <meta property="og:description" content="@ViewData[Constants.Description]" />
+    <meta property="og:url" content="@(host + Context.Request.Path)" />
+    <meta property="og:image" content="@host/img/icon512x512.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+
+    <meta name="msapplication-square150x150logo" content="~/img/icon180x180.png" />
+
+    <link rel="icon" type="image/png" sizes="16x16" href="~/img/icon16x16.png" />
+    <link rel="apple-touch-icon" href="~/img/icon180x180.png" />
+    <link rel="shortcut icon" href="~/img/icon16x16.png" />
+
+    <link rel="edituri" type="application/rsd+xml" title="RSD" href="~/rsd.xml" />
+    <link rel="alternate" type="application/rss+xml" href="~/feed/rss/" title="@ViewData[Constants.Title]" />
+    <link rel="alternate" type="application/atom+xml" href="~/feed/atom/" title="@ViewData[Constants.Title]" />
     @RenderSection(Constants.Head, required: false)
 
+    <meta name="application-name" content="@ViewData[Constants.Title]" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Miniblog</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+<body itemscope itemtype="http://schema.org/WebPage">
 
-
-
-            </div>
-
-        </nav>
+    <header class="siteheader">
+        <div class="container">
+            <p itemprop="name"><a href="~/" itemprop="url">@manifest.Name</a></p>
+            By <span itemprop="author">@settings.Value.Owner</span>
+        </div>
     </header>
 
-    <main>
-        <div class="container">
-
-            @RenderBody()
-
-        </div>
-
+    <main itemprop="mainEntity" itemscope itemtype="http://schema.org/Blog" role="main">
+        <noscript>
+            <p class="container">@Miniblog.Core.Properties.Resources.SomeFeaturesOfThisWebsiteDoNotWorkAsExpectedWhenJavaScriptIsDisabled</p>
+        </noscript>
+        @RenderBody()
     </main>
 
-    <footer class="border-top footer text-muted">
+    <footer class="sitefooter">
         <div class="container">
+            <nav>
+                <ul>
+                    @{
+                        string path = Context.Request.Path;
 
-
-            <ul class="navbar-nav flex-grow-1">
-
-                @{
-                    string path = Context.Request.Path;
-
-
-                    if (User.Identity.IsAuthenticated)
-                    {
-                        <li><a asp-controller="Blog" asp-action="Edit" asp-route-id="">NewPost</a></li>
-                        <li><a href="~/logout/" title="SignOutAsAdministrator">SignOut</a></li>
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a asp-controller="Blog" asp-action="Edit" asp-route-id="">@Miniblog.Core.Properties.Resources.NewPost</a></li>
+                            <li><a href="~/logout/" title="@Miniblog.Core.Properties.Resources.SignOutAsAdministrator">@Miniblog.Core.Properties.Resources.SignOut</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="~/login/?returnUrl=@path" rel="nofollow" title="@Miniblog.Core.Properties.Resources.SignInAsAdministrator">@Miniblog.Core.Properties.Resources.SignIn</a></li>
+                        }
                     }
-                    else
-                    {
-                        <li><a href="~/login/?returnUrl=@path" rel="nofollow" title="SignInAsAdministrator">SignIn</a></li>
-                    }
-                }
-
-                <li> &copy; 2020 - Miniblog.Core - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
-            </ul>
+                </ul>
+            </nav>
+            <p>
+                @Miniblog.Core.Properties.Resources.PoweredBy <a href="https://github.com/madskristensen/Miniblog.Core" rel="noopener noreferrer" target="_blank">@Miniblog.Core.Properties.Resources.MiniblogCore</a>
+            </p>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+    @* This lazy loads the stylesheet in a non-render blocking way *@
+    <link rel="preload" href="~/css/belowthefold.scss" as="style" />
+    <noscript><link rel="stylesheet" href="~/css/belowthefold.scss" /></noscript>
+
+    <script src="~/js/site.js" async defer></script>
+    @RenderSection(Constants.Scripts, required: false)
 </body>
 </html>

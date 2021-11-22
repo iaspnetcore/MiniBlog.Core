@@ -12,7 +12,7 @@ A full-featured yet simple blog engine built on ASP.NET Core 6.x.
 
 Blog https://www.iaspnetcore.com/blogpost-5ec055705d065d499b65df13-how-to-create-a-miniblogcore-project-with-net6x-step-by-step
 
-**Live demo**: <https://miniblogcore.azurewebsites.net/>  
+**Live demo**: <https://miniblog.iaspnetcore.com/>  
 Username: *demo*  
 Password: *demo*
 
@@ -20,6 +20,20 @@ Password: *demo*
 
 ### Custom themes
 In search for custom designed themes for MiniBlog.Core? [Click here](https://francis.bio/miniblog-themes/).
+
+1.buy domain
+
+2.buy server
+
+3. A to server
+
+4. install nginx
+
+5. config nginx for your domain
+
+6.install Let’s Encrypt client certbot
+
+7.downloaded SSL certificates for your domain
 
 
 没有账号的点我注册Vultr账号（注册就送20美元哦）https://www.vultr.com/?ref=7035322-3B
@@ -29,8 +43,8 @@ Vultr注册购买图文教程 [Click here](https://www.vpsss.net/298.html).
 ## Features
 - How to Deploy a New Instance on Vultr Step by Step (https://www.iaspnetcore.com/blogpost-6199ff495b26cb0202ad6ce8-how-to-deploy-a-new-instance-on-vultr-step-by-step)
 - How To Install and uninstall reinstall Nginx on Ubuntu 18.04（aliyun）(https://www.iaspnetcore.com/blogpost-5d9865cc72c1772b244afe0f-how-to-install-and-uninstall-reinstall-nginx-on-ubuntu-1804aliyun)
-- User comments
-- Search engine optimized
+- How to Install and uninstall reinstall  upgrade .NET 6.x on Ubuntu 18.04*64 step by step https://www.iaspnetcore.com/blogpost-618a75d3635c733c81dc77c3-how-to-install-net-6x-on-ubuntu-180464-step-by-step
+- How to Deploying Real World ASP.NET Core 6.x on Ubuntu 18.04 step by step(vultr) https://www.iaspnetcore.com/blogpost-5f8791eb6cd85f05bcad2df1-how-to-deploying-real-world-aspnet-core-6x-on-ubuntu-1804-step-by-step
 - All major browsers fully supported (IE 9+)
 - Social media integration (Facebook, Twitter, Google+)
 - Lazy loads images for better performance
