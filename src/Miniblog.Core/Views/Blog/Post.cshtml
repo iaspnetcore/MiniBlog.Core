@@ -1,5 +1,5 @@
 ﻿@model Post
-@*@inject IOptionsSnapshot<BlogSettings> settings*@
+@inject IOptionsSnapshot<BlogSettings> settings
 @{
     ViewData[Constants.Title] = Model.Title;
     ViewData[Constants.Description] = Model.Excerpt;
@@ -9,12 +9,13 @@
 }
 
 @section Head {
-    <link rel="canonical" href="@(host + Model.GetLink())" />
+<link rel="canonical" href="@(host + Model.GetLink())" />
 }
 
-<article class="post container" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+<article class="blog-post" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+
     <header>
-        <h1 itemprop="name headline"><a href="@Model.GetLink()" rel="canonical" itemprop="url">@Model.Title</a></h1>
+        <h1 class="blog-post-title" itemprop="name headline"><a href="@Model.GetLink()" rel="canonical" itemprop="url">@Model.Title</a></h1>
         <time datetime="@Model.PubDate.ToString("s")" itemprop="datePublished">Published @Model.PubDate.ToString("MMM d, yyyy")</time>
         @if (User.Identity.IsAuthenticated)
         {
@@ -23,14 +24,14 @@
     </header>
 
     <div itemprop="articleBody mainEntityOfPage" cdnify>
-        @*@if (showFullPost || settings.Value.ListView == PostListView.FullPosts)
-            {
-                @Html.Raw(Model.RenderContent())
-            }
-            else if (settings.Value.ListView == PostListView.TitlesAndExcerpts)
-            {
-                @Html.Raw(Model.Excerpt)
-            }*@
+        @if (showFullPost || settings.Value.ListView == PostListView.FullPosts)
+        {
+            @Html.Raw(Model.RenderContent())
+        }
+        else if (settings.Value.ListView == PostListView.TitlesAndExcerpts)
+        {
+            @Html.Raw(Model.Excerpt)
+        }
         @Html.Raw(Model.RenderContent())
     </div>
 
@@ -51,24 +52,27 @@
             <span itemprop="commentCount">@Model.Comments.Count</span> @(Model.Comments.Count == 1 ? "comment" : "comments")
         </a>
 
-        @*<meta itemprop="author" content="@settings.Value.Owner" />*@
+        <meta itemprop="author" content="@settings.Value.Owner" />
         <meta itemprop="dateModified" content="@Model.LastModified.ToString("s")" />
         <meta itemprop="mainEntityOfPage" content="@(host + Model.GetLink())" />
     </footer>
+
 </article>
+
+
 
 @if (showFullPost)
 {
     await Html.RenderPartialAsync("_SocialSharing", Model.Title);
     await Html.RenderPartialAsync("Comments");
 
-   
+
 }
 
 @if (User.Identity.IsAuthenticated)
 {
     @section Scripts {
-        <script src="~/js/admin.js" async defer></script>
-        <link rel="stylesheet" href="~/css/admin.scss" />
+<script src="~/js/admin.js" async defer></script>
+<link rel="stylesheet" href="~/css/admin.scss" />
     }
 }

@@ -197,6 +197,8 @@ namespace Miniblog.Core.Controllers
        
         public async Task<IActionResult> UpdatePost(Post post)
         {
+            _logger.LogInformation("{time}:UpdatePost", DateTimeOffset.UtcNow);
+
             if (!this.ModelState.IsValid)
             {
                 _logger.LogInformation("{time}:ModelState.IsValid", DateTimeOffset.UtcNow);

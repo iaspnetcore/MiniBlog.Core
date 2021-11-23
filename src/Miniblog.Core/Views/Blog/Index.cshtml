@@ -1,33 +1,55 @@
 ﻿@model List<Post>
-@*@inject IOptionsSnapshot<BlogSettings> settings*@
+@inject IOptionsSnapshot<BlogSettings> settings
 @using Miniblog.Core.Models;
 @using Microsoft.AspNetCore.Http;
 
 @inject IHttpContextAccessor _httpContextAccessor
 
+@{
+    int currentPage = int.Parse(ViewContext.RouteData.Values[Constants.page] as string ?? "0");
+
+    int totalPosts;
+ //   totalPosts = int.TryParse(ViewData[Constants.TotalPostCount].ToString(), out totalPosts) ? totalPosts : 0;
+    totalPosts = int.TryParse("10", out totalPosts) ? totalPosts : 0;
+
+    int totalPages = (totalPosts / this.settings.Value.PostsPerPage) - (totalPosts % this.settings.Value.PostsPerPage == 0 ? 1 : 0);
+}
+
+
+
+
+
 @foreach (var post in Model)
 {
 
 
-    <article class="post container" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+
+    <article class="blog-post" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+
         <header>
-            <h1 itemprop="name headline"><a href="@post.GetLink()" rel="canonical" itemprop="url">@post.Title</a></h1>
-            <time datetime="@post.PubDate.ToString("s")" itemprop="datePublished">Published @post.PubDate.ToString("MMM d, yyyy")</time>
+            <h2 class="blog-post-title" itemprop="name headline"><a href="@post.GetLink()" rel="canonical" itemprop="url">@post.Title</a></h2>
+
+            <time datetime="@post.PubDate.ToString("s")" itemprop="datePublished">Published @post.PubDate.ToString("MMdd, yyyy")</time>
+
             @if (User.Identity.IsAuthenticated)
             {
                 <a asp-controller="Blog" asp-action="edit" asp-route-id="@post.ID" title="Edit the post">Edit post</a>
             }
         </header>
 
-        @*<div itemprop="articleBody mainEntityOfPage" cdnify>
-                @if (showFullPost || settings.Value.ListView == PostListView.FullPosts)
-                {
-                    @Html.Raw(post.RenderContent())
-                }
-                else if (settings.Value.ListView == PostListView.TitlesAndExcerpts)
-                {
-                    @Html.Raw(post.Excerpt)
-                }
+
+        @* <p class="blog-post-meta">December 23, 2020 by <a href="#">Jacob</a></p>*@
+
+
+        @*   <div itemprop="articleBody mainEntityOfPage" cdnify>
+            @if (showFullPost || settings.Value.ListView == PostListView.FullPosts)
+            {
+            @Html.Raw(post.RenderContent())
+            }
+            else if (settings.Value.ListView == PostListView.TitlesAndExcerpts)
+            {
+            @Html.Raw(post.Excerpt)
+            }
             </div>*@
 
         <div itemprop="articleBody mainEntityOfPage" cdnify>
@@ -62,12 +84,49 @@
 
 
 
+
+
     @if (User.Identity.IsAuthenticated)
     {
         @*@section Scripts {
             <script src="~/js/admin.js" async defer></script>
             <link rel="stylesheet" href="~/css/admin.scss" />
-        }*@
+            }*@
     }
 
 }
+
+
+<nav class="blog-pagination" aria-label="Pagination">
+    <a class="btn btn-outline-primary" href="#">Older</a>
+    <a class="btn btn-outline-secondary disabled">Newer</a>
+
+
+</nav>
+
+<nav class="blog-pagination" aria-label="Pagination" ">
+    @if (currentPage < totalPages)
+    {
+    <a rel="prev" href="@ViewData[Constants.prev]" title="Older posts">&laquo; Older</a>
+    }
+    @if (currentPage > 0)
+    {
+    <a rel="next" href="@ViewData[Constants.next]" title="Newer posts">Newer &raquo;</a>
+    }
+    <br /><br />
+
+    @section Head
+    {
+    @if ( currentPage < totalPages)
+    {
+    <link rel="prev" href="@ViewData[Constants.prev]" />
+    }
+    @if (currentPage > 0)
+    {
+    <link rel="next" href="@ViewData[Constants.next]" />
+    }
+    }
+
+</nav>
+
+
