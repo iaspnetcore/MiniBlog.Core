@@ -3,6 +3,19 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//https://www.iaspnetcore.com/blogpost-618aaa94635c733c81e1486d-aspnet-core-6x-w3clogger
+builder.Services.AddW3CLogging(logging =>
+{
+    // Log all W3C fields
+    logging.LoggingFields = W3CLoggingFields.All;
+
+    ////logging.FileSizeLimit = 5 * 1024 * 1024;
+    ////logging.RetainedFileCountLimit = 2;
+    ////logging.FileName = "MyLogFile";
+    ////logging.LogDirectory = @"C:\logs";
+    //logging.FlushInterval = TimeSpan.FromSeconds(2);
+});
+
 // Add custom services to the container.
 builder.Services.AddSingleton<IUserServices, BlogUserServices>();
 builder.Services.AddSingleton<IBlogService, FileBlogService>();
@@ -108,6 +121,8 @@ app.UseStaticFiles();
 app.UseWebMarkupMin();
 
 app.UseRouting();
+
+app.UseW3CLogging();
 
 app.UseAuthentication();
 app.UseAuthorization();
