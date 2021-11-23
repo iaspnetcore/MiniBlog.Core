@@ -17,15 +17,19 @@ namespace Miniblog.Core.Controllers
 {
     public class BlogController : Controller
     {
-
+        private readonly ILogger<BlogController> _logger;
         private readonly IBlogService blog;
 
      
 
         private readonly IOptionsSnapshot<BlogSettings> settings;
 
-        public BlogController(IBlogService blog, IOptionsSnapshot<BlogSettings> settings)
+        public BlogController(IBlogService blog, 
+            IOptionsSnapshot<BlogSettings> settings,
+            ILogger<BlogController> logger)
         {
+            this._logger = logger;
+
             this.blog = blog;
             this.settings = settings;
            
@@ -195,6 +199,8 @@ namespace Miniblog.Core.Controllers
         {
             if (!this.ModelState.IsValid)
             {
+                _logger.LogInformation("{time}:ModelState.IsValid", DateTimeOffset.UtcNow);
+
                 return this.View(nameof(Edit), post);
             }
 

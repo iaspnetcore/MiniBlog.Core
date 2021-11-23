@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Text;
-using System.Text.RegularExpressions;
-
-
 namespace Miniblog.Core.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.Text;
+    using System.Text.RegularExpressions;
+
     public class Post
     {
         public IList<string> Categories { get; } = new List<string>();
+
+        public IList<string> Tags { get; } = new List<string>();
 
         public IList<Comment> Comments { get; } = new List<Comment>();
 
@@ -30,6 +31,7 @@ namespace Miniblog.Core.Models
 
         public DateTime PubDate { get; set; } = DateTime.UtcNow;
 
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string Slug { get; set; } = string.Empty;
 
         [Required]
@@ -106,6 +108,5 @@ namespace Miniblog.Core.Models
 
             return text;
         }
-
     }
 }

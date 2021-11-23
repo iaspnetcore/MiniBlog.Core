@@ -1,7 +1,9 @@
 {
-  "name": "Miniblog.Core",
-  "short_name": "Miniblog.Core",
-  "description": "A short description of the blog.",
+  "name": "www.iaspnetcore.com",
+  "short_name": "www.iaspnetcore.com",
+  "description": "This site is all about www.iaspnetcore.com",
+
+  "Information.\",": null,
   "icons": [
     {
       "src": "/img/icon192x192.png",
