@@ -21,6 +21,8 @@
 
   <ItemGroup>
 
+    <PackageReference Include="Microsoft.SyndicationFeed.ReaderWriter" Version="1.0.2" />
+
     <PackageReference Include="WebEssentials.AspNetCore.PWA" Version="1.0.65" />
 
     <PackageReference Include="LigerShark.WebOptimizer.Core" Version="3.0.330" />
@@ -30,6 +32,8 @@
     <PackageReference Include="WebMarkupMin.AspNetCore6" Version="2.11.0" />
     <PackageReference Include="WebMarkupMin.Core" Version="2.9.0" />
     <PackageReference Include="WebMarkupMin.NUglify" Version="2.11.0" />
+  
+  <PackageReference Include="System.Linq.Async" Version="5.0.0" />
   </ItemGroup>
 
 </Project>

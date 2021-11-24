@@ -112,3 +112,111 @@ dotnet run
 
 ## Credits
 SVG icons by <https://simpleicons.org/>
+
+
+
+### miniblog.iaspnetcore.com服务器配置
+
+     miniblog.iaspnetcore.com服务器配置
+
+1.miniblog.iaspnetcore.com
+
+命令行启动
+
+~~~
+Debug
+
+sudo systemctl stop kestrel-miniblogiaspnetcorecom.service
+
+cd /
+cd /var/www/MiniBlog.Core/src/Miniblog.Core
+
+dotnet run --urls http://0.0.0.0:6002
+
+dotnet run --urls http://localhost:6002
+
+
+Release
+
+sudo systemctl stop kestrel-miniblogiaspnetcorecom.service
+
+
+cd /var/www/MiniBlog.Core/src/Miniblog.Core
+
+dotnet publish -c release
+
+
+cd /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net6.0/publish/
+
+dotnet Miniblog.Core.dll  --urls http://127.0.0.1:6002
+
+
+~~~
+
+2.服务配置
+
+sudo vi /etc/systemd/system/kestrel-miniblogiaspnetcorecom.service
+
+path:/etc/systemd/system/kestrel-miniblogiaspnetcorecom.service
+
+kestrel-miniblogiaspnetcorecom.service
+
+~~~
+[Unit]
+Description=miniblog.iaspnetcore.com App running on Ubuntu
+
+[Service]
+WorkingDirectory=/var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net6.0/publish
+ExecStart=/usr/bin/dotnet /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net6.0/publish/Miniblog.Core.dll --urls http://127.0.0.1:6002
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=miniblog.iaspnetcore.com
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+[Install]
+WantedBy=multi-user.target
+
+~~~
+
+
+3.Install first kestrel-miniblogiaspnetcorecom.service
+
+~~~
+sudo systemctl daemon-reload 
+sudo systemctl enable kestrel-miniblogiaspnetcorecom.service
+sudo systemctl start kestrel-miniblogiaspnetcorecom.service
+sudo systemctl status kestrel-miniblogiaspnetcorecom.service
+
+
+sudo systemctl restart kestrel-miniblogiaspnetcorecom.service
+sudo systemctl stop kestrel-miniblogiaspnetcorecom.service
+sudo systemctl status kestrel-miniblogiaspnetcorecom.service
+
+sudo journalctl -fu kestrel-miniblogiaspnetcorecom.service
+
+
+
+sudo systemctl restart kestrel-miniblogiaspnetcorecom.service
+
+
+~~~
+
+4.批处理
+
+~~~
+cp  -r /var/www/nopcommerce/wwwiaspnetcorecom/src/Presentation/Nop.Web/bin/release/net5.0/publish/wwwroot/uploadimages  /var/www/nopcommerce/wwwiaspnetcorecom/src/Presentation/Nop.Web/wwwroot/uploadimages
+
+sudo systemctl stop kestrel-wwwiaspnetcorecom.service
+
+cd /
+cd var/www/nopcommerce/wwwiaspnetcorecom/src/Presentation/Nop.Web
+dotnet publish -c release
+
+sudo systemctl daemon-reload 
+sudo systemctl restart kestrel-wwwiaspnetcorecom.service
+
+~~~
