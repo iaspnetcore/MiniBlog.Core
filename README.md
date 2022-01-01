@@ -12,7 +12,7 @@ A full-featured yet simple blog engine built on ASP.NET Core 6.x.
 
 Blog https://www.iaspnetcore.com/blogpost-5ec055705d065d499b65df13-how-to-create-a-miniblogcore-project-with-net6x-step-by-step
 
-temple come from:https://getbootstrap.com/docs/5.1/examples/blog/#
+Theme templates come from:https://getbootstrap.com/docs/5.1/examples/blog/#
 
 **Live demo**: <https://miniblog.iaspnetcore.com/>  
 Username: *demo*  
