@@ -32,7 +32,7 @@
         {
             @Html.Raw(Model.Excerpt)
         }
-        @Html.Raw(Model.RenderContent())
+       
     </div>
 
     <footer>
@@ -46,7 +46,10 @@
                 }
             </ul>
             <text>and has</text>
+
         }
+
+       
 
         <a href="@Model.GetLink()#comments" itemprop="discussionUrl" title="Go to the comments section">
             <span itemprop="commentCount">@Model.Comments.Count</span> @(Model.Comments.Count == 1 ? "comment" : "comments")

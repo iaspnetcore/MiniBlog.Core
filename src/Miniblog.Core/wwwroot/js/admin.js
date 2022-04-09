@@ -66,9 +66,9 @@
             window.tinymce.init({
                 selector: '#Content',
                 autoresize_min_height: 200,
-                plugins: 'autosave preview searchreplace visualchars image link media fullscreen code codesample table hr pagebreak autoresize nonbreaking anchor insertdatetime advlist lists textcolor wordcount imagetools colorpicker',
+                plugins: 'toc autosave preview searchreplace visualchars image link media fullscreen code codesample table hr pagebreak autoresize nonbreaking anchor insertdatetime advlist lists textcolor wordcount imagetools colorpicker',
                 menubar: "edit view format insert table",
-                toolbar1: 'formatselect | bold italic blockquote forecolor backcolor | imageupload link | alignleft aligncenter alignright  | numlist bullist outdent indent | fullscreen',
+                toolbar1: 'formatselect toc | bold italic blockquote forecolor backcolor | imageupload link | alignleft aligncenter alignright  | numlist bullist outdent indent | fullscreen',
                 selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
                 autoresize_bottom_margin: 0,
                 paste_data_images: true,
