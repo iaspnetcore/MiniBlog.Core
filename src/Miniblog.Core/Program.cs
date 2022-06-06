@@ -43,7 +43,14 @@ builder.Services.AddHttpContextAccessor();
 
 
 builder.Services.AddSingleton<IUserServices, BlogUserServices>();
-builder.Services.AddSingleton<IBlogService, FileBlogService>();
+
+//old
+//builder.Services.AddSingleton<IBlogService, FileBlogService>();
+
+//new
+builder.Services.AddSingleton<IBlogService, FileBlogJsonDataService>();
+
+
 
 //Add  Configure Options https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/fundamentals/configuration/index/samples/6.x/ConfigSample/Program.cs
 builder.Configuration.AddJsonFile("appsettings.json");

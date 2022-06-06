@@ -164,6 +164,7 @@ namespace Miniblog.Core.Services
             using (var writer = new FileStream(absolute, FileMode.CreateNew))
             {
                 await writer.WriteAsync(bytes, 0, bytes.Length).ConfigureAwait(false);
+                 writer.Close();
             }
 
             return $"/{POSTS}/{FILES}/{fileNameWithSuffix}";
@@ -179,41 +180,10 @@ namespace Miniblog.Core.Services
             var filePath = this.GetFilePath(post);
             post.LastModified = DateTime.UtcNow;
 
-            var doc = new XDocument(
-                            new XElement("post",
-                                new XElement("title", post.Title),
-                                new XElement("slug", post.Slug),
-                                new XElement("pubDate", FormatDateTime(post.PubDate)),
-                                new XElement("lastModified", FormatDateTime(post.LastModified)),
-                                new XElement("excerpt", post.Excerpt),
-                                new XElement("content", post.Content),
-                                new XElement("ispublished", post.IsPublished),
-                                new XElement("categories", string.Empty),
-                                new XElement("comments", string.Empty)
-                            ));
+            
 
-            var categories = doc.XPathSelectElement("post/categories");
-            foreach (var category in post.Categories)
-            {
-                categories.Add(new XElement("category", category));
-            }
-
-            var comments = doc.XPathSelectElement("post/comments");
-            foreach (var comment in post.Comments)
-            {
-                comments.Add(
-                    new XElement("comment",
-                        new XElement("author", comment.Author),
-                        new XElement("email", comment.Email),
-                        new XElement("date", FormatDateTime(comment.PubDate)),
-                        new XElement("content", comment.Content),
-                        new XAttribute("isAdmin", comment.IsAdmin),
-                        new XAttribute("id", comment.ID)
-                    ));
-            }
-
-            using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite))
-            {
+            //using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite))
+            //{
 
                 // Serialize and save
 
@@ -221,7 +191,9 @@ namespace Miniblog.Core.Services
 
                
                 await File.WriteAllTextAsync(filePath, serializedData);
-            }
+
+               
+            //}
 
             if (!this.cache.Contains(post))
             {
@@ -316,28 +288,16 @@ namespace Miniblog.Core.Services
             // Can this be done in parallel to speed it up?
             foreach (var file in Directory.EnumerateFiles(this.folder, "*.xml", SearchOption.TopDirectoryOnly))
             {
-                var doc = XElement.Load(file);
+               
 
-                var post = new Post
-                {
-                    ID = Path.GetFileNameWithoutExtension(file),
-                    Title = ReadValue(doc, "title"),
-                    Excerpt = ReadValue(doc, "excerpt"),
-                    Content = ReadValue(doc, "content"),
-                    Slug = ReadValue(doc, "slug").ToLowerInvariant(),
-                    PubDate = DateTime.Parse(ReadValue(doc, "pubDate"), CultureInfo.InvariantCulture,
-                        DateTimeStyles.AdjustToUniversal),
-                    LastModified = DateTime.Parse(
-                        ReadValue(
-                            doc,
-                            "lastModified",
-                            DateTime.UtcNow.ToString(CultureInfo.InvariantCulture)),
-                        CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal),
-                    IsPublished = bool.Parse(ReadValue(doc, "ispublished", "true")),
-                };
+                // Read and deserialize
+                var rawData = File.ReadAllText(file);
+                var post = JsonSerializer.Deserialize<Post>(rawData);
 
-                LoadCategories(post, doc);
-                LoadComments(post, doc);
+              
+
+                //LoadCategories(post, doc);
+                //LoadComments(post, doc);
                 this.cache.Add(post);
             }
         }
