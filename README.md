@@ -2,9 +2,14 @@
 
 A full-featured yet simple blog engine built on ASP.NET Core 6.x.
 
+## project information
+
 local£ºctyun disk D:\developer_mini_core
+
 github:https://github.com/iaspnetcore/MiniBlog.Core.git
+
 domain:miniblog.iaspnetcore.com on vultr
+
 
 
 [![Build status](https://ci.appveyor.com/api/projects/status/lwjrlpvmhg50wwbs?svg=true)](https://ci.appveyor.com/project/madskristensen/miniblog-core)
