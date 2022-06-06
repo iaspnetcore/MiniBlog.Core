@@ -85,23 +85,19 @@ Vultr×¢²á¹ºÂòÍ¼ÎÄ½Ì³Ì [Click here](https://www.vpsss.net/298.html).
 
 
 ## How to use
-On the command line, install the template.
+On the command line
 
 ```cmd
-dotnet new --install MadsKristensen.AspNetCore.Miniblog
+
+cd /
+cd /var/www/MiniBlog.Core/src/Miniblog.Core
+
+dotnet run --urls http://0.0.0.0:6002
+
+dotnet run --urls http://localhost:6002
+
 ```
 
-Then create it into any folder.
-
-```cmd
-dotnet new miniblog
-```
-
-Then run it or open it in Visual Studio or your favorite code editor.
-
-```cmd
-dotnet run
-```
 
 
 
