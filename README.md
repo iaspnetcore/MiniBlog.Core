@@ -2,7 +2,7 @@
 
 A full-featured yet simple blog engine built on ASP.NET Core 6.x.
 
-## project information
+## project git information
 
 local：ctyun disk D:\developer_mini_core
 
@@ -10,6 +10,8 @@ github:https://github.com/iaspnetcore/MiniBlog.Core.git
 
 domain:miniblog.iaspnetcore.com on vultr
 
+
+src\Miniblog.Core\wwwroot\Posts\files
 
 
 
@@ -46,6 +48,9 @@ Password: *demo*
 没有账号的点我注册Vultr账号（注册就送20美元哦）https://www.vultr.com/?ref=7035322-3B
 
 Vultr注册购买图文教程 [Click here](https://www.vpsss.net/298.html).
+
+
+
 
 ## Features
 - How to Deploy a New Instance on Vultr Step by Step (https://www.iaspnetcore.com/blogpost-6199ff495b26cb0202ad6ce8-how-to-deploy-a-new-instance-on-vultr-step-by-step)
