@@ -12,11 +12,6 @@ domain:miniblog.iaspnetcore.com on vultr
 
 
 
-[![Build status](https://ci.appveyor.com/api/projects/status/lwjrlpvmhg50wwbs?svg=true)](https://ci.appveyor.com/project/madskristensen/miniblog-core)
-[![NuGet](https://img.shields.io/nuget/v/MadsKristensen.AspNetCore.Miniblog.svg)](https://nuget.org/packages/MadsKristensen.AspNetCore.Miniblog/)
-
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
-
 
 Blog https://www.iaspnetcore.com/blogpost-5ec055705d065d499b65df13-how-to-create-a-miniblogcore-project-with-net6x-step-by-step
 
@@ -28,10 +23,10 @@ Theme templates come from:https://getbootstrap.com/docs/5.1/examples/blog/#
 Username: *demo*  
 Password: *demo*
 
-![Editor](art/editor.png)
+
 
 ### Custom themes
-In search for custom designed themes for MiniBlog.Core? [Click here](https://francis.bio/miniblog-themes/).
+
 
 1.buy domain
 
@@ -57,12 +52,7 @@ Vultr×¢²á¹ºÂòÍ¼ÎÄ½Ì³Ì [Click here](https://www.vpsss.net/298.html).
 - How To Install and uninstall reinstall Nginx on Ubuntu 18.04£¨aliyun£©(https://www.iaspnetcore.com/blogpost-5d9865cc72c1772b244afe0f-how-to-install-and-uninstall-reinstall-nginx-on-ubuntu-1804aliyun)
 - How to Install and uninstall reinstall  upgrade .NET 6.x on Ubuntu 18.04*64 step by step https://www.iaspnetcore.com/blogpost-618a75d3635c733c81dc77c3-how-to-install-net-6x-on-ubuntu-180464-step-by-step
 - How to Deploying Real World ASP.NET Core 6.x on Ubuntu 18.04 step by step(vultr) https://www.iaspnetcore.com/blogpost-5f8791eb6cd85f05bcad2df1-how-to-deploying-real-world-aspnet-core-6x-on-ubuntu-1804-step-by-step
-- All major browsers fully supported (IE 9+)
-- Social media integration (Facebook, Twitter, Google+)
-- Lazy loads images for better performance
-- Easy YouTube video embedding
-- Looks great when printed
-- Works offline with use of [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/)
+
 - Follows best practices for web applications
   - [See DareBoost report](https://www.dareboost.com/en/report/59e928f10cf224d151dfbe2d)
 
@@ -92,14 +82,7 @@ Vultr×¢²á¹ºÂòÍ¼ÎÄ½Ì³Ì [Click here](https://www.vpsss.net/298.html).
 - Uses the [Azure Image Optimizer](https://github.com/madskristensen/ImageOptimizerWebJob) for superb image compression
 - Uses a [CDN Tag Helper](https://github.com/madskristensen/WebEssentials.AspNetCore.CdnTagHelpers) to make it easy to serve the images from any CDN.
 
-### YouTube embeds
-You can embed any youtube video by using the following syntax in the source of a blog post:
 
-```
-[youtube:ScXvuavqhzo]
-```
-
-*ScXvuavqhzo* is the ID of the YouTube video which can be found in any YouTube link looking this *youtube.com/watch?v=**ScXvuavqhzo***
 
 ## How to use
 On the command line, install the template.
@@ -120,8 +103,7 @@ Then run it or open it in Visual Studio or your favorite code editor.
 dotnet run
 ```
 
-## Credits
-SVG icons by <https://simpleicons.org/>
+
 
 
 
