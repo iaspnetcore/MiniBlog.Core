@@ -269,7 +269,7 @@ namespace Miniblog.Core.Services
         private static string ReadValue(XElement doc, XName name, string defaultValue = "") =>
             doc.Element(name) is null ? defaultValue : doc.Element(name)?.Value ?? defaultValue;
 
-        private string GetFilePath(Post post) => Path.Combine(this.folder, $"{post.ID}.xml");
+        private string GetFilePath(Post post) => Path.Combine(this.folder, $"{post.ID}.json");
 
         private void Initialize()
         {
@@ -286,7 +286,7 @@ namespace Miniblog.Core.Services
             }
 
             // Can this be done in parallel to speed it up?
-            foreach (var file in Directory.EnumerateFiles(this.folder, "*.xml", SearchOption.TopDirectoryOnly))
+            foreach (var file in Directory.EnumerateFiles(this.folder, "*.json", SearchOption.TopDirectoryOnly))
             {
                
 
