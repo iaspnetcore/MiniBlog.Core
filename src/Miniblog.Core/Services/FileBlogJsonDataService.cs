@@ -164,7 +164,7 @@ namespace Miniblog.Core.Services
             using (var writer = new FileStream(absolute, FileMode.CreateNew))
             {
                 await writer.WriteAsync(bytes, 0, bytes.Length).ConfigureAwait(false);
-                 writer.Close();
+                writer.Close();
             }
 
             return $"/{POSTS}/{FILES}/{fileNameWithSuffix}";
@@ -180,20 +180,18 @@ namespace Miniblog.Core.Services
             var filePath = this.GetFilePath(post);
             post.LastModified = DateTime.UtcNow;
 
-            
 
-            //using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite))
-            //{
 
-                // Serialize and save
 
-                var serializedData = JsonSerializer.Serialize(post);
+            // Serialize and save
 
-               
-                await File.WriteAllTextAsync(filePath, serializedData);
+            var serializedData = JsonSerializer.Serialize(post);
 
-               
-            //}
+
+            await File.WriteAllTextAsync(filePath, serializedData);
+
+
+
 
             if (!this.cache.Contains(post))
             {
@@ -288,13 +286,13 @@ namespace Miniblog.Core.Services
             // Can this be done in parallel to speed it up?
             foreach (var file in Directory.EnumerateFiles(this.folder, "*.json", SearchOption.TopDirectoryOnly))
             {
-               
+
 
                 // Read and deserialize
                 var rawData = File.ReadAllText(file);
                 var post = JsonSerializer.Deserialize<Post>(rawData);
 
-              
+
 
                 //LoadCategories(post, doc);
                 //LoadComments(post, doc);

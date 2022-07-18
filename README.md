@@ -11,11 +11,15 @@ github:https://github.com/iaspnetcore/MiniBlog.Core.git
 domain:miniblog.iaspnetcore.com on vultr
 
 
-src\Miniblog.Core\wwwroot\Posts\files
-
+\src\Miniblog.Core\wwwroot\Posts\files
+\src\Miniblog.Core\wwwroot\Posts
 
 
 Blog https://www.iaspnetcore.com/blogpost-5ec055705d065d499b65df13-how-to-create-a-miniblogcore-project-with-net6x-step-by-step
+
+CRUD Operation With JSON File Data In C#
+
+https://www.iaspnetcore.com/blogpost-629d3d6d0cdc850252550b72-crud-operation-with-json-file-data-in-c
 
 Create a ViewComponents https://docs.microsoft.com/en-us/aspnet/core/mvc/views/view-components?view=aspnetcore-6.0
 
