@@ -4,7 +4,12 @@ A full-featured yet simple blog engine built on ASP.NET Core 6.x.
 
 ## project git information
 
-local£ºctyun disk D:\developer_mini_core
+20221126  
+move from local£ºctyun disk D:\developer_mini_core to  f:\developer_mini_core_json
+
+local disk; f:\developer_mini_core_json
+
+
 
 github:https://github.com/iaspnetcore/MiniBlog.Core.git
 
