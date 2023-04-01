@@ -18,7 +18,7 @@ global using Microsoft.AspNetCore.DataProtection;
 global using Microsoft.AspNetCore.HttpLogging;
 
 
-global using WebMarkupMin.AspNetCore6;
+global using WebMarkupMin.AspNetCore7;
 global using WebMarkupMin.Core;
 
 global using WebMarkupMin.NUglify;
