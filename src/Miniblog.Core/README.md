@@ -1,11 +1,11 @@
-# Blog engine for ASP.NET Core 6.x
+# Blog engine for ASP.NET Core 8.x
 
 A full-featured yet simple blog engine built on ASP.NET Core 6.x.
 
 ## project git information
 
 20221126  
-move from local£ºctyun disk D:\developer_mini_core to  f:\developer_mini_core_json
+
 
 local disk; f:\developer_mini_core_json
 
