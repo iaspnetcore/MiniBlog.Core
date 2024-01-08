@@ -1,6 +1,8 @@
 # Blog engine for ASP.NET Core 8.x
 
-A full-featured yet simple blog engine built on ASP.NET Core 6.x.
+miniblog.iaspnetcore.com
+
+A full-featured yet simple blog engine built on ASP.NET Core 8.x.
 
 ## project git information
 
