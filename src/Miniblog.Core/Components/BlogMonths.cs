@@ -12,8 +12,7 @@ namespace Miniblog.Core.Components
          
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(
-        int maxPriority, bool isDone)
+        public async Task<IViewComponentResult> InvokeAsync( int maxPriority, bool isDone)
         {
             
             return View();
