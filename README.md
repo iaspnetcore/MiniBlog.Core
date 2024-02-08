@@ -1,6 +1,8 @@
 # Blog engine for ASP.NET Core 8.x
 
-A full-featured yet simple blog engine built on ASP.NET Core 6.x.
+miniblog.iaspnetcore.com
+
+A full-featured yet simple blog engine built on ASP.NET Core 8.x.  bootstrap 5.x + json data + .net 8.x
 
 ## project git information
 
@@ -70,11 +72,11 @@ Vultr注册购买图文教程 [Click here](https://www.vpsss.net/298.html).
 - Follows best practices for web applications
   - [See DareBoost report](https://www.dareboost.com/en/report/59e928f10cf224d151dfbe2d)
 
-## Technical features
-- High performance. Gets 100/100 points on Google PageSpeed Insights 
-  - [Run PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F)
-- Speed Index < 1000
-  - [See WebPageTest](http://www.webpagetest.org/result/170928_1R_cf91bb2d800cc389821c5cfa7e353f0d/) 
+## buy domain
+- Buy a domain from www.namesilo.com 
+  - [www.namesilo.com](https://www.iaspnetcore.com/Blog/BlogPost/5eb9e65e775d020216dbe009/wwwnamesilocom-registration-and-domain-name-purchase-operation-manual)
+- Change Name Servers dns
+  - [Change Name Servers dns  to cf](https://www.iaspnetcore.com/Blog/BlogPost/5eb9e65e775d020216dbe009/wwwnamesilocom-registration-and-domain-name-purchase-operation-manual#mcetoc_1g2fliou61l) 
 - Meets highest accessibility standards 
   - [Run accessibility validator](http://wave.webaim.org/report#/https://miniblogcore.azurewebsites.net/)
 - W3C standards compliant 
@@ -104,7 +106,7 @@ On the command line
 ```cmd
 
 cd /
-cd /var/www/MiniBlog.Core/src/Miniblog.Core
+cd /var/www/iaspnetcore/developer_mini_core_json_miniblogiaspnetcorecom/developer_mini_core_json/src/Miniblog.Core
 
 dotnet run --urls http://0.0.0.0:6002
 
@@ -112,7 +114,23 @@ dotnet run --urls http://localhost:6002
 
 ```
 
+output
 
+~~~
+
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:6002
+dbug: Microsoft.AspNetCore.Hosting.Diagnostics[13]
+      Loaded hosting startup assembly Miniblog.Core
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+
+
+
+~~~
 
 
 
@@ -131,7 +149,8 @@ Debug
 sudo systemctl stop kestrel-miniblogiaspnetcorecom.service
 
 cd /
-cd /var/www/MiniBlog.Core/src/Miniblog.Core
+cd /var/www/iaspnetcore/developer_mini_core_json_miniblogiaspnetcorecom/developer_mini_core_json/src/Miniblog.Core
+
 
 dotnet run --urls http://0.0.0.0:6002
 
@@ -143,12 +162,21 @@ Release
 sudo systemctl stop kestrel-miniblogiaspnetcorecom.service
 
 
-cd /var/www/MiniBlog.Core/src/Miniblog.Core
+cd /var/www/iaspnetcore/developer_mini_core_json_miniblogiaspnetcorecom/developer_mini_core_json/src/Miniblog.Core
 
 dotnet publish -c release
 
+Output
 
-cd /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net6.0/publish/
+~~~
+ Miniblog.Core -> /var/www/iaspnetcore/developer_mini_core_json_miniblogiaspnetcorecom/developer_mini_core_json/src/Miniblog.Core/bin/Release/net8.0/Miniblog.Core.dll
+  Adding WebOptimizer cache files to publish output
+  Miniblog.Core -> /var/www/iaspnetcore/developer_mini_core_json_miniblogiaspnetcorecom/developer_mini_core_json/src/Miniblog.Core/bin/Release/net8.0/publish/
+
+~~~
+
+
+cd /var/www/iaspnetcore/developer_mini_core_json_miniblogiaspnetcorecom/developer_mini_core_json/src/Miniblog.Core/bin/Release/net8.0/publish/
 
 dotnet Miniblog.Core.dll  --urls http://127.0.0.1:6002
 
@@ -168,8 +196,8 @@ kestrel-miniblogiaspnetcorecom.service
 Description=miniblog.iaspnetcore.com App running on Ubuntu
 
 [Service]
-WorkingDirectory=/var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net6.0/publish
-ExecStart=/usr/bin/dotnet /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net6.0/publish/Miniblog.Core.dll --urls http://127.0.0.1:6002
+WorkingDirectory=/var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net8.0/publish
+ExecStart=/usr/bin/dotnet /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net8.0/publish/Miniblog.Core.dll --urls http://localhost:6002
 Restart=always
 # Restart service after 10 seconds if the dotnet service crashes:
 RestartSec=10
@@ -210,15 +238,25 @@ sudo systemctl restart kestrel-miniblogiaspnetcorecom.service
 4.批处理
 
 ~~~
-cp  -r /var/www/nopcommerce/wwwiaspnetcorecom/src/Presentation/Nop.Web/bin/release/net5.0/publish/wwwroot/uploadimages  /var/www/nopcommerce/wwwiaspnetcorecom/src/Presentation/Nop.Web/wwwroot/uploadimages
+cp  -r /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net8.0/publish/wwwroot/uploadimages  /var/www/MiniBlog.Core/src/Miniblog.Core/src/wwwroot/uploadimages
 
-sudo systemctl stop kestrel-wwwiaspnetcorecom.service
+
+
+sudo systemctl stop kestrel-miniblogiaspnetcorecom.service
 
 cd /
-cd var/www/nopcommerce/wwwiaspnetcorecom/src/Presentation/Nop.Web
+cd /var/www/MiniBlog.Core/src/Miniblog.Core
 dotnet publish -c release
 
 sudo systemctl daemon-reload 
-sudo systemctl restart kestrel-wwwiaspnetcorecom.service
+sudo systemctl restart kestrel-miniblogiaspnetcorecom.service
+
+~~~
+
+~~~
+chmod 777 /var/artifacts
+chmode 777 /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net8.0/publish/wwwroot/Posts
+
+
 
 ~~~
