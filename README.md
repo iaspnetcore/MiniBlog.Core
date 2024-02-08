@@ -73,10 +73,10 @@ Vultr×¢²á¹ºÂòÍ¼ÎÄ½Ì³Ì [Click here](https://www.vpsss.net/298.html).
   - [See DareBoost report](https://www.dareboost.com/en/report/59e928f10cf224d151dfbe2d)
 
 ## buy domain
-- Buy a domain from www.namesilo.com 
-  - [www.namesilo.com](https://www.iaspnetcore.com/Blog/BlogPost/5eb9e65e775d020216dbe009/wwwnamesilocom-registration-and-domain-name-purchase-operation-manual)
-- Change Name Servers dns
-  - [Change Name Servers dns  to cf](https://www.iaspnetcore.com/Blog/BlogPost/5eb9e65e775d020216dbe009/wwwnamesilocom-registration-and-domain-name-purchase-operation-manual#mcetoc_1g2fliou61l) 
+- Log in to your domain registrar
+  - [www.namesilo.com](https://www.iaspnetcore.com/Blog/BlogPost/5eb9e65e775d020216dbe009/wwwnamesilocom-registration-and-domain-name-purchase-operation-manual) -Buy a domain from www.namesilo.com 
+- Update your nameservers - change your default Nameservers to Cloudflare Nameservers
+  - [Change Name Servers dns  to cf](https://www.iaspnetcore.com/Blog/BlogPost/5eb9e65e775d020216dbe009/wwwnamesilocom-registration-and-domain-name-purchase-operation-manual#mcetoc_1g2fliou61l) - Find the list of nameservers at your registrar. Add both of your assigned Cloudflare nameservers, remove any other nameservers, and save your changes.Change Name Servers dns  to cf
 ## buy server
 - Meets highest accessibility standards 
   - [Run accessibility validator](http://wave.webaim.org/report#/https://miniblogcore.azurewebsites.net/)
@@ -87,14 +87,17 @@ Vultr×¢²á¹ºÂòÍ¼ÎÄ½Ì³Ì [Click here](https://www.vpsss.net/298.html).
 - cloudflare login
   - [cloudflare login](https://www.iaspnetcore.com/Blog/BlogPost/5ee3a43a1c73d43127f113a1/cloudflare-free-cdn-website-acceleration-practical-tutorial-1-registration-dns-resolution-records) -  register  with Cloudflare Register.
 - Add Site
-  - [Add Site](https://www.iaspnetcore.com/Blog/BlogPost/5ee3a43a1c73d43127f113a1/cloudflare-free-cdn-website-acceleration-practical-tutorial-1-registration-dns-resolution-records#mcetoc_1g37gn9lfv)
-- Schema.org support with HTML 5 Microdata 
-  - [Run testing tool](https://search.google.com/structured-data/testing-tool#url=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F)
-- OpenGraph support for Facebook, Twitter, Pinterest and more
-  - [Run Facebook validator](https://developers.facebook.com/tools/debug/sharing/?q=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F)
-  - [Check the tags](http://opengraphcheck.com/result.php?url=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F#.WdhRDjBlB3g)
-- Seach engine optimized
-  - [Run SEO Site Checkup](https://seositecheckup.com/seo-audit/miniblogcore.azurewebsites.net)
+  - [Add Site](https://www.iaspnetcore.com/Blog/BlogPost/5ee3a43a1c73d43127f113a1/cloudflare-free-cdn-website-acceleration-practical-tutorial-1-registration-dns-resolution-records#mcetoc_1g37gn9lfv) - Add your Site to cloudflare
+- Create DNS records 
+  - [Create DNS records](https://www.iaspnetcore.com/Blog/BlogPost/6450b5b069967f028dbd9414/using-lets-encrypt-certbot-with-cloudflares-reverse-proxy) - For A, AAAA records, decide whether hostname traffic is proxied through Cloudflare.
+  - SSL/TLS encryption mode is Full, Encrypts traffic between the browser and Cloudflare,Cloudflare  and Origin Server
+  - [SSL/TLS encryption mode is Full](https://www.iaspnetcore.com/Blog/BlogPost/6450b5b069967f028dbd9414/using-lets-encrypt-certbot-with-cloudflares-reverse-proxy) - Full Encrypts end-to-end, using a self signed certificate on the server
+## nginx server on vps
+- Install and uninstall reinstall Nginx on Ubuntu 18.04
+  - [How To Install and uninstall reinstall Nginx on Ubuntu 18.04£¨aliyun/vultr](https://developers.facebook.com/tools/debug/sharing/?q=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F)
+  - [nginx configure](https://www.iaspnetcore.com/Blog/BlogPost/5c32197c1d51ae0eec5613be/deployment-of-https-combat-series-6-generation-and-modification-of-lets-encrypt-free-certificate-aliyun-ubuntu-1604-64bit)
+- Let's Encrypt
+  - [Let's Encrypt:How to Secure Nginx with Let¡¯s Encrypt on Ubuntu 18.04(vultr)](https://www.iaspnetcore.com/blogpost-619a0dbd5b26cb0202ae5bf1-lets-encrypthow-to-secure-nginx-with-lets-encrypt-on-ubuntu-1804vultr)
 - Security HTTP headers set
   - [Run security scan](https://securityheaders.io/?q=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F&hide=on&followRedirects=on)
 - Uses the [Azure Image Optimizer](https://github.com/madskristensen/ImageOptimizerWebJob) for superb image compression
