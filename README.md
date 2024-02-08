@@ -2,7 +2,11 @@
 
 miniblog.iaspnetcore.com
 
-A full-featured yet simple blog engine built on ASP.NET Core 8.x.  bootstrap 5.x + json data + .net 8.x
+A full-featured yet simple blog engine built on ASP.NET Core 8.x.  bootstrap 5.x + json data + .net 8.x.
+
+I have a vps on vultr.com running Ubuntu, and installed ASP.NET Core 8.x  many months ago.
+
+Browser Cloudflare Origin Server http://localhost:7600  full mode
 
 ## project git information
 
@@ -45,15 +49,17 @@ Password: *demo*
 
 2.buy server
 
-3. A to server
+3.A to server
 
-4. install nginx
+4.install nginx
 
-5. config nginx for your domain
+5.config nginx for your domain
 
 6.install Let’s Encrypt client certbot
 
 7.downloaded SSL certificates for your domain
+
+8.run local web server
 
 
 没有账号的点我注册Vultr账号（注册就送20美元哦）https://www.vultr.com/?ref=7035322-3B
@@ -78,8 +84,8 @@ Vultr注册购买图文教程 [Click here](https://www.vpsss.net/298.html).
 - Update your nameservers - change your default Nameservers to Cloudflare Nameservers
   - [Change Name Servers dns  to cf](https://www.iaspnetcore.com/Blog/BlogPost/5eb9e65e775d020216dbe009/wwwnamesilocom-registration-and-domain-name-purchase-operation-manual#mcetoc_1g2fliou61l) - Find the list of nameservers at your registrar. Add both of your assigned Cloudflare nameservers, remove any other nameservers, and save your changes.Change Name Servers dns  to cf
 ## buy server
-- Meets highest accessibility standards 
-  - [Run accessibility validator](http://wave.webaim.org/report#/https://miniblogcore.azurewebsites.net/)
+- buy server from vultr.com 
+  - [buy server](https://www.iaspnetcore.com/blogpost-6199ff495b26cb0202ad6ce8-how-to-deploy-a-new-instance-on-vultr-step-by-step)
 - W3C standards compliant 
   - [Run HTML validator](https://html5.validator.nu/?doc=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F)
   - [Run RSS validator](https://validator.w3.org/feed/check.cgi?url=https%3A%2F%2Fminiblogcore.azurewebsites.net%2Ffeed%2Frss%2F)
