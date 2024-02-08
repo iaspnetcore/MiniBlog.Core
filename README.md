@@ -77,15 +77,17 @@ Vultr×¢²á¹ºÂòÍ¼ÎÄ½Ì³Ì [Click here](https://www.vpsss.net/298.html).
   - [www.namesilo.com](https://www.iaspnetcore.com/Blog/BlogPost/5eb9e65e775d020216dbe009/wwwnamesilocom-registration-and-domain-name-purchase-operation-manual)
 - Change Name Servers dns
   - [Change Name Servers dns  to cf](https://www.iaspnetcore.com/Blog/BlogPost/5eb9e65e775d020216dbe009/wwwnamesilocom-registration-and-domain-name-purchase-operation-manual#mcetoc_1g2fliou61l) 
+## buy server
 - Meets highest accessibility standards 
   - [Run accessibility validator](http://wave.webaim.org/report#/https://miniblogcore.azurewebsites.net/)
 - W3C standards compliant 
   - [Run HTML validator](https://html5.validator.nu/?doc=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F)
   - [Run RSS validator](https://validator.w3.org/feed/check.cgi?url=https%3A%2F%2Fminiblogcore.azurewebsites.net%2Ffeed%2Frss%2F)
-- Responsive web design
-  - [See mobile emulators](https://www.responsinator.com/?url=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F)
-- Mobile friendly
-  - [Run Mobile-Friendly Test](https://search.google.com/test/mobile-friendly?id=i4i-jw3VafvYnjcyHt4jgg)
+## cloudflare
+- cloudflare login
+  - [cloudflare login](https://www.iaspnetcore.com/Blog/BlogPost/5ee3a43a1c73d43127f113a1/cloudflare-free-cdn-website-acceleration-practical-tutorial-1-registration-dns-resolution-records) -  register  with Cloudflare Register.
+- Add Site
+  - [Add Site](https://www.iaspnetcore.com/Blog/BlogPost/5ee3a43a1c73d43127f113a1/cloudflare-free-cdn-website-acceleration-practical-tutorial-1-registration-dns-resolution-records#mcetoc_1g37gn9lfv)
 - Schema.org support with HTML 5 Microdata 
   - [Run testing tool](https://search.google.com/structured-data/testing-tool#url=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F)
 - OpenGraph support for Facebook, Twitter, Pinterest and more
