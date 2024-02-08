@@ -90,7 +90,7 @@ Vultr×¢²á¹ºÂòÍ¼ÎÄ½Ì³Ì [Click here](https://www.vpsss.net/298.html).
   - [Add Site](https://www.iaspnetcore.com/Blog/BlogPost/5ee3a43a1c73d43127f113a1/cloudflare-free-cdn-website-acceleration-practical-tutorial-1-registration-dns-resolution-records#mcetoc_1g37gn9lfv) - Add your Site to cloudflare
 - Create DNS records 
   - [Create DNS records](https://www.iaspnetcore.com/Blog/BlogPost/6450b5b069967f028dbd9414/using-lets-encrypt-certbot-with-cloudflares-reverse-proxy) - For A, AAAA records, decide whether hostname traffic is proxied through Cloudflare.
-  - SSL/TLS encryption mode is Full, Encrypts traffic between the browser and Cloudflare,Cloudflare  and Origin Server
+- SSL/TLS encryption mode is Full, Encrypts traffic between the browser and Cloudflare,Cloudflare  and Origin Server
   - [SSL/TLS encryption mode is Full](https://www.iaspnetcore.com/Blog/BlogPost/6450b5b069967f028dbd9414/using-lets-encrypt-certbot-with-cloudflares-reverse-proxy) - Full Encrypts end-to-end, using a self signed certificate on the server
 ## nginx server on vps
 - Install and uninstall reinstall Nginx on Ubuntu 18.04
