@@ -1,4 +1,4 @@
-# Blog engine for ASP.NET Core 8.x
+# Blog engine for ASP.NET Core 9.x
 
 miniblog.iaspnetcore.com
 
@@ -13,7 +13,7 @@ Browser Cloudflare Origin Server http://localhost:7600  full mode
 20221126  
 
 
-local disk; f:\developer_mini_core_json
+local disk: f:\developer_mini_core_json
 
 
 
@@ -26,7 +26,13 @@ domain:miniblog.iaspnetcore.com on vultr
 \src\Miniblog.Core\wwwroot\Posts
 
 
-Blog https://www.iaspnetcore.com/blogpost-5ec055705d065d499b65df13-how-to-create-a-miniblogcore-project-with-net6x-step-by-step
+Blog 
+
+Miniblog.Core Project:How to Create a Miniblog.Core Project with .Net 6.x step by step
+https://www.iaspnetcore.com/blogpost-5ec055705d065d499b65df13-how-to-create-a-miniblogcore-project-with-net6x-step-by-step
+
+Miniblog.Core Project:ASP.NET Core 6.x-W3CLogger  
+https://www.iaspnetcore.com/Blog/BlogPost/618aaa94635c733c81e1486d/miniblogcore-projectaspnet-core-6x-w3clogger
 
 CRUD Operation With JSON File Data In C#
 
@@ -94,7 +100,7 @@ Vultr×¢²á¹ºÂòÍ¼ÎÄ½Ì³Ì [Click here](https://www.vpsss.net/298.html).
   - [cloudflare login](https://www.iaspnetcore.com/Blog/BlogPost/5ee3a43a1c73d43127f113a1/cloudflare-free-cdn-website-acceleration-practical-tutorial-1-registration-dns-resolution-records) -  register  with Cloudflare Register.
 - Add Site
   - [Add Site](https://www.iaspnetcore.com/Blog/BlogPost/5ee3a43a1c73d43127f113a1/cloudflare-free-cdn-website-acceleration-practical-tutorial-1-registration-dns-resolution-records#mcetoc_1g37gn9lfv) - Add your Site to cloudflare
-- Create DNS records 
+- Create DNS records - Add an A and AAAA record for your website
   - [Create DNS records](https://www.iaspnetcore.com/Blog/BlogPost/6450b5b069967f028dbd9414/using-lets-encrypt-certbot-with-cloudflares-reverse-proxy) - For A, AAAA records, decide whether hostname traffic is proxied through Cloudflare.
 - SSL/TLS encryption mode is Full, Encrypts traffic between the browser and Cloudflare,Cloudflare  and Origin Server
   - [SSL/TLS encryption mode is Full](https://www.iaspnetcore.com/Blog/BlogPost/6450b5b069967f028dbd9414/using-lets-encrypt-certbot-with-cloudflares-reverse-proxy) - Full Encrypts end-to-end, using a self signed certificate on the server
@@ -264,10 +270,18 @@ sudo systemctl restart kestrel-miniblogiaspnetcorecom.service
 
 ~~~
 
+ System.UnauthorizedAccessException: Access to the path '/var/www/Miniblog.Core/Miniblog.Core/src/bin/Release/net8.0/publish/obj' is denied.
+ System.UnauthorizedAccessException: Access to the path '/var/www/Miniblog.Core/src/bin/Release/net8.0/publish/wwwroot/Posts/638056233411122802.json' is denied.
+
+
 ~~~
 chmod 777 /var/artifacts
 chmode 777 /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net8.0/publish/wwwroot/Posts
 
+chmod -R 777 /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net8.0/publish/wwwroot/Posts
+
+
 
 
 ~~~
+
