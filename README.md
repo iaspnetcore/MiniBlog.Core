@@ -42,7 +42,7 @@ Password: *demo*
 
 
 
-### Custom themes
+### Quick start
 
 
 1.buy domain
@@ -82,7 +82,7 @@ Vultr注册购买图文教程 [Click here](https://www.vpsss.net/298.html).
 
 ## buy domain
 - Log in to your domain registrar
-  - [www.namesilo.com](https://www.iaspnetcore.com/Blog/BlogPost/5eb9e65e775d020216dbe009/wwwnamesilocom-registration-and-domain-name-purchase-operation-manual) -Buy a domain from www.namesilo.com 
+  - [www.namesilo.com](https://www.iaspnetcore.com/Blog/BlogPost/5eb9e65e775d020216dbe009/wwwnamesilocom-registration-and-domain-name-purchase-operation-manual) - First, you’ll need to host a domain.Buy a domain from www.namesilo.com ,or You can use Cloudflare to purchase a domain.
 - Update your nameservers - change your default Nameservers to Cloudflare Nameservers
   - [Change Name Servers dns  to cf](https://www.iaspnetcore.com/Blog/BlogPost/5eb9e65e775d020216dbe009/wwwnamesilocom-registration-and-domain-name-purchase-operation-manual#mcetoc_1g2fliou61l) - Find the list of nameservers at your registrar. Add both of your assigned Cloudflare nameservers, remove any other nameservers, and save your changes.Change Name Servers dns  to cf
 ## buy server
