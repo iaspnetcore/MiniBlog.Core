@@ -61,7 +61,7 @@ Password: *demo*
 
 5.config nginx for your domain
 
-6.install Let��s Encrypt client certbot
+6.install Let's Encrypt client certbot
 
 7.downloaded SSL certificates for your domain
 
@@ -80,7 +80,7 @@ Password: *demo*
 
 5.config nginx for your domain
 
-6.install Let��s Encrypt client certbot
+6.install Let's Encrypt Encrypt client certbot
 
 7.downloaded SSL certificates for your domain
 
@@ -90,9 +90,9 @@ Password: *demo*
 
 
 
-û���˺ŵĵ���ע��Vultr�˺ţ�ע�����20��ԪŶ��https://www.vultr.com/?ref=7035322-3B
+没有账号的点我注册Vultr账号（注册就送20美元哦）https://www.vultr.com/?ref=7035322-3B
 
-Vultrע�Ṻ��ͼ�Ľ̳� [Click here](https://www.vpsss.net/298.html).
+Vultr注册购买图文教程 [Click here](https://www.vpsss.net/298.html)..
 
 
 
@@ -180,7 +180,7 @@ info: Microsoft.Hosting.Lifetime[0]
 
 1.miniblog.iaspnetcore.com
 
-����������
+服务器配置
 
 ~~~
 Debug
@@ -222,7 +222,7 @@ dotnet Miniblog.Core.dll  --urls http://127.0.0.1:6002
 
 ~~~
 
-2.��������
+2.服务配置
 
 sudo vi /etc/systemd/system/kestrel-miniblogiaspnetcorecom.service
 
@@ -274,7 +274,7 @@ sudo systemctl restart kestrel-miniblogiaspnetcorecom.service
 
 ~~~
 
-4.������
+4.批处理
 
 ~~~
 cp  -r /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net8.0/publish/wwwroot/uploadimages  /var/www/MiniBlog.Core/src/Miniblog.Core/src/wwwroot/uploadimages
