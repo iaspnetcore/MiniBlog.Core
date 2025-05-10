@@ -48,7 +48,7 @@ Password: *demo*
 
 
 
-### Custom themes
+## Quick Start
 
 
 1.buy domain
@@ -61,23 +61,45 @@ Password: *demo*
 
 5.config nginx for your domain
 
-6.install Let¡¯s Encrypt client certbot
+6.install Letï¿½ï¿½s Encrypt client certbot
+
+7.downloaded SSL certificates for your domain
+
+8.run local web server
+
+## Quick Start
+
+
+1. A Linux domain is available on the Vultr. Also see docker/README.md
+
+2.A Linux server is available on the Vultr. Also see docker/README.md
+
+3.A to server
+
+4.install nginx   here(https://www.iaspnetcore.com/Blog/BlogPost/5d9865cc72c1772b244afe0f/how-to-install-and-uninstall-reinstall-nginx-on-ubuntu-1804aliyunvultr)
+
+5.config nginx for your domain
+
+6.install Letï¿½ï¿½s Encrypt client certbot
 
 7.downloaded SSL certificates for your domain
 
 8.run local web server
 
 
-Ã»ÓÐÕËºÅµÄµãÎÒ×¢²áVultrÕËºÅ£¨×¢²á¾ÍËÍ20ÃÀÔªÅ¶£©https://www.vultr.com/?ref=7035322-3B
 
-Vultr×¢²á¹ºÂòÍ¼ÎÄ½Ì³Ì [Click here](https://www.vpsss.net/298.html).
+
+
+Ã»ï¿½ï¿½ï¿½ËºÅµÄµï¿½ï¿½ï¿½×¢ï¿½ï¿½Vultrï¿½ËºÅ£ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½20ï¿½ï¿½ÔªÅ¶ï¿½ï¿½https://www.vultr.com/?ref=7035322-3B
+
+Vultr×¢ï¿½á¹ºï¿½ï¿½Í¼ï¿½Ä½Ì³ï¿½ [Click here](https://www.vpsss.net/298.html).
 
 
 
 
 ## Features
 - How to Deploy a New Instance on Vultr Step by Step (https://www.iaspnetcore.com/blogpost-6199ff495b26cb0202ad6ce8-how-to-deploy-a-new-instance-on-vultr-step-by-step)
-- How To Install and uninstall reinstall Nginx on Ubuntu 18.04£¨aliyun£©(https://www.iaspnetcore.com/blogpost-5d9865cc72c1772b244afe0f-how-to-install-and-uninstall-reinstall-nginx-on-ubuntu-1804aliyun)
+- How To Install and uninstall reinstall Nginx on Ubuntu 18.04ï¿½ï¿½aliyunï¿½ï¿½(https://www.iaspnetcore.com/blogpost-5d9865cc72c1772b244afe0f-how-to-install-and-uninstall-reinstall-nginx-on-ubuntu-1804aliyun)
 - How to Install and uninstall reinstall  upgrade .NET 6.x on Ubuntu 18.04*64 step by step https://www.iaspnetcore.com/blogpost-618a75d3635c733c81dc77c3-how-to-install-net-6x-on-ubuntu-180464-step-by-step
 - How to Deploying Real World ASP.NET Core 6.x on Ubuntu 18.04 step by step(vultr) https://www.iaspnetcore.com/blogpost-5f8791eb6cd85f05bcad2df1-how-to-deploying-real-world-aspnet-core-6x-on-ubuntu-1804-step-by-step
 
@@ -106,10 +128,10 @@ Vultr×¢²á¹ºÂòÍ¼ÎÄ½Ì³Ì [Click here](https://www.vpsss.net/298.html).
   - [SSL/TLS encryption mode is Full](https://www.iaspnetcore.com/Blog/BlogPost/6450b5b069967f028dbd9414/using-lets-encrypt-certbot-with-cloudflares-reverse-proxy) - Full Encrypts end-to-end, using a self signed certificate on the server
 ## nginx server on vps
 - Install and uninstall reinstall Nginx on Ubuntu 18.04
-  - [How To Install and uninstall reinstall Nginx on Ubuntu 18.04£¨aliyun/vultr](https://developers.facebook.com/tools/debug/sharing/?q=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F)
+  - [How To Install and uninstall reinstall Nginx on Ubuntu 18.04ï¿½ï¿½aliyun/vultr](https://developers.facebook.com/tools/debug/sharing/?q=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F)
   - [nginx configure](https://www.iaspnetcore.com/Blog/BlogPost/5c32197c1d51ae0eec5613be/deployment-of-https-combat-series-6-generation-and-modification-of-lets-encrypt-free-certificate-aliyun-ubuntu-1604-64bit)
 - Let's Encrypt
-  - [Let's Encrypt:How to Secure Nginx with Let¡¯s Encrypt on Ubuntu 18.04(vultr)](https://www.iaspnetcore.com/blogpost-619a0dbd5b26cb0202ae5bf1-lets-encrypthow-to-secure-nginx-with-lets-encrypt-on-ubuntu-1804vultr)
+  - [Let's Encrypt:How to Secure Nginx with Letï¿½ï¿½s Encrypt on Ubuntu 18.04(vultr)](https://www.iaspnetcore.com/blogpost-619a0dbd5b26cb0202ae5bf1-lets-encrypthow-to-secure-nginx-with-lets-encrypt-on-ubuntu-1804vultr)
 - Security HTTP headers set
   - [Run security scan](https://securityheaders.io/?q=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F&hide=on&followRedirects=on)
 - Uses the [Azure Image Optimizer](https://github.com/madskristensen/ImageOptimizerWebJob) for superb image compression
@@ -152,13 +174,13 @@ info: Microsoft.Hosting.Lifetime[0]
 
 
 
-### miniblog.iaspnetcore.com·þÎñÆ÷ÅäÖÃ
+### miniblog.iaspnetcore.comï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-     miniblog.iaspnetcore.com·þÎñÆ÷ÅäÖÃ
+     miniblog.iaspnetcore.comï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 1.miniblog.iaspnetcore.com
 
-ÃüÁîÐÐÆô¶¯
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 ~~~
 Debug
@@ -200,7 +222,7 @@ dotnet Miniblog.Core.dll  --urls http://127.0.0.1:6002
 
 ~~~
 
-2.·þÎñÅäÖÃ
+2.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 sudo vi /etc/systemd/system/kestrel-miniblogiaspnetcorecom.service
 
@@ -252,7 +274,7 @@ sudo systemctl restart kestrel-miniblogiaspnetcorecom.service
 
 ~~~
 
-4.Åú´¦Àí
+4.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 ~~~
 cp  -r /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net8.0/publish/wwwroot/uploadimages  /var/www/MiniBlog.Core/src/Miniblog.Core/src/wwwroot/uploadimages
