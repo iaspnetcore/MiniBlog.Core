@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31825.309
+# Visual Studio Version 18
+VisualStudioVersion = 18.12.12412.261 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Miniblog.Core", "src\Miniblog.Core\Miniblog.Core.csproj", "{F848FFB9-43EC-40DE-A8DE-4A98BB922360}"
 EndProject
@@ -11,6 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{E3681023-E029-434A-B53F-2BA7CF6FAC33}"
+	ProjectSection(SolutionItems) = preProject
+		doc\CHANGELOG.md = doc\CHANGELOG.md
+		doc\README-install.md = doc\README-install.md
+		doc\README-ZH.md = doc\README-ZH.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
