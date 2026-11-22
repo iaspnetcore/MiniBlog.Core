@@ -2,22 +2,20 @@
 
 miniblog.iaspnetcore.com
 
-A full-featured yet simple blog engine built on ASP.NET Core 8.x.  bootstrap 5.x + json data + .net 8.x.
+A full-featured yet simple blog engine built on ASP.NET Core 9.x.  bootstrap 5.x + json data + .net 9.x.
 
-I have a vps on vultr.com running Ubuntu, and installed ASP.NET Core 8.x  many months ago.
+I have a vps on vultr.com running Ubuntu, and installed ASP.NET Core 9.x  many months ago.
 
 Browser Cloudflare Origin Server http://localhost:7600  full mode
 
 ## project git information
 
-20221126  
+202505
 
 
 local disk: f:\developer_mini_core_json
 
-
-
-github:https://github.com/iaspnetcore/MiniBlog.Core.git
+remote:github:https://github.com/iaspnetcore/MiniBlog.Core.git
 
 domain:miniblog.iaspnetcore.com on vultr
 
@@ -26,13 +24,7 @@ domain:miniblog.iaspnetcore.com on vultr
 \src\Miniblog.Core\wwwroot\Posts
 
 
-Blog 
-
-Miniblog.Core Project:How to Create a Miniblog.Core Project with .Net 6.x step by step
-https://www.iaspnetcore.com/blogpost-5ec055705d065d499b65df13-how-to-create-a-miniblogcore-project-with-net6x-step-by-step
-
-Miniblog.Core Project:ASP.NET Core 6.x-W3CLogger  
-https://www.iaspnetcore.com/Blog/BlogPost/618aaa94635c733c81e1486d/miniblogcore-projectaspnet-core-6x-w3clogger
+Blog https://www.iaspnetcore.com/blogpost-5ec055705d065d499b65df13-how-to-create-a-miniblogcore-project-with-net6x-step-by-step
 
 CRUD Operation With JSON File Data In C#
 
@@ -48,7 +40,7 @@ Password: *demo*
 
 
 
-## Quick Start
+### Custom themes
 
 
 1.buy domain
@@ -61,45 +53,23 @@ Password: *demo*
 
 5.config nginx for your domain
 
-6.install Let's Encrypt client certbot
+6.install Let’s Encrypt client certbot
 
 7.downloaded SSL certificates for your domain
 
 8.run local web server
-
-## Quick Start
-
-
-1. A Linux domain is available on the Vultr. Also see docker/README.md
-
-2.A Linux server is available on the Vultr. Also see docker/README.md
-
-3.A to server
-
-4.install nginx   here(https://www.iaspnetcore.com/Blog/BlogPost/5d9865cc72c1772b244afe0f/how-to-install-and-uninstall-reinstall-nginx-on-ubuntu-1804aliyunvultr)
-
-5.config nginx for your domain
-
-6.install Let's Encrypt Encrypt client certbot
-
-7.downloaded SSL certificates for your domain
-
-8.run local web server
-
-
-
 
 
 没有账号的点我注册Vultr账号（注册就送20美元哦）https://www.vultr.com/?ref=7035322-3B
 
-Vultr注册购买图文教程 [Click here](https://www.vpsss.net/298.html)..
+Vultr注册购买图文教程 [Click here](https://www.vpsss.net/298.html).
 
 
 
 
 ## Features
 - How to Deploy a New Instance on Vultr Step by Step (https://www.iaspnetcore.com/blogpost-6199ff495b26cb0202ad6ce8-how-to-deploy-a-new-instance-on-vultr-step-by-step)
-- How To Install and uninstall reinstall Nginx on Ubuntu 18.04��aliyun��(https://www.iaspnetcore.com/blogpost-5d9865cc72c1772b244afe0f-how-to-install-and-uninstall-reinstall-nginx-on-ubuntu-1804aliyun)
+- How To Install and uninstall reinstall Nginx on Ubuntu 18.04（aliyun）(https://www.iaspnetcore.com/blogpost-5d9865cc72c1772b244afe0f-how-to-install-and-uninstall-reinstall-nginx-on-ubuntu-1804aliyun)
 - How to Install and uninstall reinstall  upgrade .NET 6.x on Ubuntu 18.04*64 step by step https://www.iaspnetcore.com/blogpost-618a75d3635c733c81dc77c3-how-to-install-net-6x-on-ubuntu-180464-step-by-step
 - How to Deploying Real World ASP.NET Core 6.x on Ubuntu 18.04 step by step(vultr) https://www.iaspnetcore.com/blogpost-5f8791eb6cd85f05bcad2df1-how-to-deploying-real-world-aspnet-core-6x-on-ubuntu-1804-step-by-step
 
@@ -122,16 +92,16 @@ Vultr注册购买图文教程 [Click here](https://www.vpsss.net/298.html)..
   - [cloudflare login](https://www.iaspnetcore.com/Blog/BlogPost/5ee3a43a1c73d43127f113a1/cloudflare-free-cdn-website-acceleration-practical-tutorial-1-registration-dns-resolution-records) -  register  with Cloudflare Register.
 - Add Site
   - [Add Site](https://www.iaspnetcore.com/Blog/BlogPost/5ee3a43a1c73d43127f113a1/cloudflare-free-cdn-website-acceleration-practical-tutorial-1-registration-dns-resolution-records#mcetoc_1g37gn9lfv) - Add your Site to cloudflare
-- Create DNS records - Add an A and AAAA record for your website
+- Create DNS records 
   - [Create DNS records](https://www.iaspnetcore.com/Blog/BlogPost/6450b5b069967f028dbd9414/using-lets-encrypt-certbot-with-cloudflares-reverse-proxy) - For A, AAAA records, decide whether hostname traffic is proxied through Cloudflare.
 - SSL/TLS encryption mode is Full, Encrypts traffic between the browser and Cloudflare,Cloudflare  and Origin Server
   - [SSL/TLS encryption mode is Full](https://www.iaspnetcore.com/Blog/BlogPost/6450b5b069967f028dbd9414/using-lets-encrypt-certbot-with-cloudflares-reverse-proxy) - Full Encrypts end-to-end, using a self signed certificate on the server
 ## nginx server on vps
 - Install and uninstall reinstall Nginx on Ubuntu 18.04
-  - [How To Install and uninstall reinstall Nginx on Ubuntu 18.04��aliyun/vultr](https://developers.facebook.com/tools/debug/sharing/?q=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F)
+  - [How To Install and uninstall reinstall Nginx on Ubuntu 18.04（aliyun/vultr](https://developers.facebook.com/tools/debug/sharing/?q=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F)
   - [nginx configure](https://www.iaspnetcore.com/Blog/BlogPost/5c32197c1d51ae0eec5613be/deployment-of-https-combat-series-6-generation-and-modification-of-lets-encrypt-free-certificate-aliyun-ubuntu-1604-64bit)
 - Let's Encrypt
-  - [Let's Encrypt:How to Secure Nginx with Let��s Encrypt on Ubuntu 18.04(vultr)](https://www.iaspnetcore.com/blogpost-619a0dbd5b26cb0202ae5bf1-lets-encrypthow-to-secure-nginx-with-lets-encrypt-on-ubuntu-1804vultr)
+  - [Let's Encrypt:How to Secure Nginx with Let’s Encrypt on Ubuntu 18.04(vultr)](https://www.iaspnetcore.com/blogpost-619a0dbd5b26cb0202ae5bf1-lets-encrypthow-to-secure-nginx-with-lets-encrypt-on-ubuntu-1804vultr)
 - Security HTTP headers set
   - [Run security scan](https://securityheaders.io/?q=https%3A%2F%2Fminiblogcore.azurewebsites.net%2F&hide=on&followRedirects=on)
 - Uses the [Azure Image Optimizer](https://github.com/madskristensen/ImageOptimizerWebJob) for superb image compression
@@ -174,13 +144,13 @@ info: Microsoft.Hosting.Lifetime[0]
 
 
 
-### miniblog.iaspnetcore.com����������
+### miniblog.iaspnetcore.com服务器配置
 
-     miniblog.iaspnetcore.com����������
+     miniblog.iaspnetcore.com服务器配置
 
 1.miniblog.iaspnetcore.com
 
-服务器配置
+命令行启动
 
 ~~~
 Debug
@@ -292,18 +262,10 @@ sudo systemctl restart kestrel-miniblogiaspnetcorecom.service
 
 ~~~
 
- System.UnauthorizedAccessException: Access to the path '/var/www/Miniblog.Core/Miniblog.Core/src/bin/Release/net8.0/publish/obj' is denied.
- System.UnauthorizedAccessException: Access to the path '/var/www/Miniblog.Core/src/bin/Release/net8.0/publish/wwwroot/Posts/638056233411122802.json' is denied.
-
-
 ~~~
 chmod 777 /var/artifacts
 chmode 777 /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net8.0/publish/wwwroot/Posts
 
-chmod -R 777 /var/www/MiniBlog.Core/src/Miniblog.Core/bin/Release/net8.0/publish/wwwroot/Posts
-
-
 
 
 ~~~
-
